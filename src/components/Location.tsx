@@ -2,13 +2,13 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { MapPin, Navigation, Compass, Building, CheckCircle } from 'lucide-react'
+import { MapPin, Navigation, Compass, Building, CheckCircle, ExternalLink } from 'lucide-react'
 
 const nearbyLandmarks = [
-  { name: 'Central Transit Hub & Metro Station', distance: '3 mins walk' },
-  { name: 'International Airport Access Road', distance: '15 mins drive' },
-  { name: 'Financial District & Bank Towers', distance: '5 mins drive' },
-  { name: '5-Star Luxury Hotels & Convention Centre', distance: '7 mins drive' },
+  { name: 'Direct Frontage on Dhaka-Chittagong Highway', distance: 'Immediate Access' },
+  { name: 'Motijheel Business District', distance: 'Few minutes drive' },
+  { name: 'Gulistan Commercial Hub', distance: 'Few minutes drive' },
+  { name: 'Rayerbag Bus Stand', distance: 'Walking distance' },
 ]
 
 export default function Location() {
@@ -25,6 +25,7 @@ export default function Location() {
           >
             07 — Strategic Connectivity
           </motion.span>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -32,7 +33,7 @@ export default function Location() {
             transition={{ duration: 0.8 }}
             className="font-serif text-4xl md:text-5xl font-bold text-white mt-4 leading-tight"
           >
-            At the Heart of the City’s <span className="text-gold-gradient">Commercial Hub</span>
+            Located Right Beside <span className="text-gold-gradient">Dhaka-Chittagong Highway</span>
           </motion.h2>
 
           <motion.p
@@ -42,7 +43,7 @@ export default function Location() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mt-6 text-neutral-300 font-light leading-relaxed text-base md:text-lg"
           >
-            Muktar Plaza is positioned directly at the primary commercial intersection, providing unmatched access for shoppers, corporate clients, and high-net-worth investors.
+            Muktar Plaza sits right beside the Dhaka-Chittagong Highway at Rayerbag, Jatrabari, Dhaka. Motijheel or Gulistan can be reached in just a few minutes with seamless connectivity to the city’s commercial core.
           </motion.p>
 
           <div className="mt-8 space-y-4">
@@ -53,7 +54,7 @@ export default function Location() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="flex items-center justify-between p-4 rounded-xl glass-panel border border-white/5"
+                className="flex items-center justify-between p-4 rounded-xl glass-panel border border-white/5 hover:border-gold-500/30 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <MapPin className="w-5 h-5 text-gold-400" />
@@ -65,53 +66,60 @@ export default function Location() {
               </motion.div>
             ))}
           </div>
+
+          <div className="mt-6 flex items-center gap-3">
+            <a
+              href="https://maps.app.goo.gl/QZNL4orwjoaUXh1eA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gold-500 text-obsidian text-xs font-bold uppercase tracking-wider hover:bg-gold-400 transition"
+            >
+              <Navigation className="w-4 h-4" />
+              Open in Google Maps
+              <ExternalLink className="w-3 h-3" />
+            </a>
+            <span className="text-xs text-neutral-500">Rayerbag bus stand, Jatrabari, Dhaka</span>
+          </div>
         </div>
 
-        {/* Right Stylized Map Graphics */}
+        {/* Right Map */}
         <div className="lg:col-span-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative h-[480px] rounded-3xl overflow-hidden glass-panel border border-gold-500/30 p-8 flex flex-col justify-between"
+            className="relative h-[520px] rounded-3xl overflow-hidden glass-panel border border-gold-500/30 p-3"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:24px_24px] opacity-20" />
-            
-            {/* Stylized Pin Marker */}
-            <div className="relative z-10 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Compass className="w-6 h-6 text-gold-400 animate-spin-slow" />
-                <span className="font-serif text-lg font-bold text-white">Prime Location Map</span>
-              </div>
-              <span className="px-3 py-1 rounded-full bg-gold-500/20 text-gold-400 text-xs font-mono">
-                Lat 23.8103° N / Long 90.4125° E
-              </span>
+            <div className="absolute top-4 left-4 z-20 flex items-center gap-2 bg-obsidian/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+              <Compass className="w-4 h-4 text-gold-400" />
+              <span className="text-xs font-mono text-gold-400">Highway Marked Route</span>
             </div>
 
-            {/* Central Landmark Card */}
-            <div className="relative z-10 max-w-sm mx-auto p-6 rounded-2xl glass-panel text-center border border-gold-500/40 shadow-2xl">
-              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 p-[1px] mx-auto mb-4 flex items-center justify-center">
-                <div className="w-full h-full bg-obsidian rounded-full flex items-center justify-center text-gold-400">
-                  <Building className="w-7 h-7" />
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d443.6647642921254!2d90.45641226938828!3d23.700229265763515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b750eeee9cbb%3A0x7ce4ab98c973f350!2z4KaH4Kao4Ka44Ka-4KarIOCmruCngeCmleCnjeCmpOCmvuCmsCDgpqrgp43gprLgpr7gppzgpr4!5e0!3m2!1sen!2sbd!4v1786439026665!5m2!1sen!2sbd"
+              width="100%"
+              height="100%"
+              style={{ border: 0, borderRadius: '1.5rem' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="Muktar Plaza Location"
+              className="h-full w-full"
+            />
+
+            <div className="absolute bottom-4 left-4 right-4 z-20 flex items-center justify-between bg-obsidian/80 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/10">
+              <div className="flex items-center gap-2">
+                <Building className="w-5 h-5 text-gold-400" />
+                <div>
+                  <p className="text-sm font-bold text-white">MUKTAR PLAZA</p>
+                  <p className="text-[10px] uppercase tracking-widest text-neutral-400">Commercial Epicenter</p>
                 </div>
               </div>
-              <h3 className="font-serif text-2xl font-bold text-white">MUKTAR PLAZA</h3>
-              <p className="text-xs text-gold-400 tracking-widest uppercase mt-1">Commercial Epicenter</p>
-              <p className="text-xs text-neutral-400 mt-3 font-light">
-                Direct frontage along 100-ft main avenue with dedicated service roads.
-              </p>
-            </div>
-
-            {/* Bottom Status Tag */}
-            <div className="relative z-10 flex items-center justify-between pt-6 border-t border-white/10">
               <div className="flex items-center gap-2 text-xs text-neutral-400">
                 <CheckCircle className="w-4 h-4 text-gold-400" />
-                <span>Zero Traffic Congestion Zone</span>
+                <span>Direct Highway Access</span>
               </div>
-              <span className="text-xs text-gold-400 font-semibold uppercase tracking-wider">
-                Explore Vicinity
-              </span>
             </div>
           </motion.div>
         </div>

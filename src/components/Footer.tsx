@@ -26,7 +26,7 @@ export default function Footer() {
               </p>
             </div>
             <div className="mt-8 text-xs text-neutral-400">
-              Designed & Developed to Awwwards Standards.
+              Designed & Developed by TALHA. Inspired by global award-winning web standards.
             </div>
           </div>
 
@@ -51,9 +51,9 @@ export default function Footer() {
               Corporate Office
             </h4>
             <p className="text-sm text-neutral-300 font-light leading-relaxed">
-              Muktar Plaza Towers, Suite 1001 <br />
-              Commercial Avenue, Central Hub <br />
-              Dhaka, Bangladesh
+              Bibir Bagicha, Gate no 4, Jatrabari, Dhaka 1204 <br />
+              Project Locatoin: Rayerbag Bus Stand, Jatrabari, Dhaka. <br />
+          
             </p>
             <div className="mt-6 flex flex-wrap gap-4 text-xs">
               <a href="#" className="text-neutral-400 hover:text-white transition-colors">Privacy Policy</a>

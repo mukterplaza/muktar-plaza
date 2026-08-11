@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowRight, Maximize2, X, PlayCircle } from 'lucide-react'
+import { ArrowRight, Maximize2, X } from 'lucide-react'
 
 type AssetType = 'image' | 'video'
 
@@ -177,10 +177,12 @@ export default function FloorPlans() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [lightboxAsset, setLightboxAsset] = useState<Asset | null>(null)
 
-  // Reset index when category changes
   useEffect(() => {
     setActiveIndex(0)
   }, [activeCategory])
+
+  const activeAssets = useMemo(() => assetsMap[activeCategory], [activeCategory])
+  const activeAsset = activeAssets[activeIndex]
 
   // Lock scroll when lightbox is open
   useEffect(() => {
@@ -200,12 +202,8 @@ export default function FloorPlans() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  const activeAssets = useMemo(() => assetsMap[activeCategory], [activeCategory])
-  const activeAsset = activeAssets[activeIndex]
-
   return (
     <section id="floorplans" className="relative py-32 px-6 md:px-12 max-w-7xl mx-auto z-10">
-      {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
         <div className="max-w-2xl">
           <motion.span
@@ -295,10 +293,6 @@ export default function FloorPlans() {
             transition={{ duration: 0.5 }}
             className="glass-panel rounded-[2rem] border border-gold-500/20 p-8 relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 p-4 opacity-10">
-               <Maximize2 className="w-24 h-24 text-gold-400" />
-            </div>
-            
             <div className="flex flex-col gap-6 relative z-10">
               <div>
                 <p className="text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold">{activeAsset.type === 'video' ? 'Cinematic Preview' : 'Plan Details'}</p>
@@ -356,12 +350,18 @@ export default function FloorPlans() {
             >
               {activeAsset.type === 'video' ? (
                 <video
+                  key={activeAsset.id}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
                   controls
                   preload="metadata"
                   poster={activeAsset.poster}
                   className="h-full w-full bg-black object-cover"
                 >
                   <source src={activeAsset.src} type="video/mp4" />
+                  Your browser does not support the video tag.
                 </video>
               ) : (
                 <img
@@ -386,11 +386,6 @@ export default function FloorPlans() {
                 <h3 className="font-serif text-2xl font-bold">{activeAsset.title}</h3>
                 <p className="text-sm text-neutral-300 line-clamp-1">{activeAsset.subtitle}</p>
               </div>
-              {activeAsset.type === 'video' && (
-                <div className="hidden sm:flex h-12 w-12 items-center justify-center rounded-full bg-gold-500 text-obsidian animate-pulse">
-                  <PlayCircle className="w-6 h-6" />
-                </div>
-              )}
             </div>
           </div>
         </motion.div>
@@ -421,7 +416,13 @@ export default function FloorPlans() {
               <div className="flex flex-col lg:flex-row">
                 <div className="relative w-full lg:w-3/4 bg-black flex items-center justify-center">
                   {lightboxAsset.type === 'video' ? (
-                    <video controls autoPlay className="max-h-[80vh] w-full object-contain">
+                    <video 
+                      controls 
+                      autoPlay 
+                      muted 
+                      playsInline 
+                      className="max-h-[80vh] w-full object-contain"
+                    >
                       <source src={lightboxAsset.src} type="video/mp4" />
                     </video>
                   ) : (
@@ -433,16 +434,6 @@ export default function FloorPlans() {
                   <p className="text-xs uppercase tracking-[0.3em] text-gold-400 font-bold mb-4">Project Detail</p>
                   <h3 className="font-serif text-3xl font-bold text-white mb-4">{lightboxAsset.title}</h3>
                   <p className="text-neutral-300 text-sm leading-relaxed mb-8">{lightboxAsset.description}</p>
-                  
-                  {lightboxAsset.highlights && (
-                    <div className="space-y-3 mb-8">
-                      {lightboxAsset.highlights.map(h => (
-                        <div key={h} className="text-xs text-neutral-400 flex items-center gap-2">
-                          <div className="w-1 h-1 bg-gold-500 rounded-full" /> {h}
-                        </div>
-                      ))}
-                    </div>
-                  )}
                   
                   <button 
                     onClick={() => setLightboxAsset(null)}
