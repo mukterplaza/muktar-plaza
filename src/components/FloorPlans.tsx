@@ -2,7 +2,14 @@
 
 import React, { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowRight, Maximize2, X } from 'lucide-react'
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Maximize2,
+  Play,
+  X,
+} from 'lucide-react'
 
 type AssetType = 'image' | 'video'
 
@@ -18,7 +25,12 @@ type Asset = {
   highlights?: string[]
 }
 
-type AssetCategory = 'plans' | 'residential' | 'commercial' | 'views' | 'videos'
+type AssetCategory =
+  | 'plans'
+  | 'residential'
+  | 'commercial'
+  | 'views'
+  | 'videos'
 
 const categories: { id: AssetCategory; label: string }[] = [
   { id: 'plans', label: 'FLOOR PLANS' },
@@ -35,7 +47,8 @@ const assetsMap: Record<AssetCategory, Asset[]> = {
       title: 'Roof Floor Plan',
       subtitle: 'Premium retail and amenity layout with landscaped terraces',
       image: '/frames/10.jpg',
-      description: 'A precise architectural plan showing rooftop circulation, public terraces, and service access.',
+      description:
+        'A precise architectural plan showing rooftop circulation, public terraces, and service access.',
       type: 'image',
     },
     {
@@ -43,7 +56,8 @@ const assetsMap: Record<AssetCategory, Asset[]> = {
       title: 'Rooftop Floor Plan',
       subtitle: 'Upper-level event and service deck design',
       image: '/frames/11.jpg',
-      description: 'A detailed rooftop arrangement for elevated commercial frontage and customer flow.',
+      description:
+        'A detailed rooftop arrangement for elevated commercial frontage and customer flow.',
       type: 'image',
     },
     {
@@ -51,7 +65,8 @@ const assetsMap: Record<AssetCategory, Asset[]> = {
       title: 'Residential Typology Plan',
       subtitle: 'Apartment layout study for every unit type',
       image: '/frames/Untitled (2048 x 1649 px).png',
-      description: 'Elegant residential flat plans with type A, B, C, D and E configurations displayed clearly.',
+      description:
+        'Elegant residential flat plans with Type A, B, C, D and E configurations displayed clearly.',
       type: 'image',
     },
     {
@@ -59,18 +74,27 @@ const assetsMap: Record<AssetCategory, Asset[]> = {
       title: 'Residential Unit Study',
       subtitle: 'Spatial flow and vertical planning overview',
       image: '/frames/Untitled (1280 x 720 px).png',
-      description: 'A premium plan visualization showing core residential circulation and unit access.',
+      description:
+        'A premium plan visualization showing core residential circulation and unit access.',
       type: 'image',
     },
   ],
+
   residential: [
     {
       id: 'flat-types',
       title: 'Residential Flat Plans',
-      subtitle: 'Editorial showcase of Muktar Plaza apartment configurations',
+      subtitle: 'Apartment configurations for modern living',
       image: '/frames/Untitled (2048 x 1649 px).png',
-      description: 'The actual Muktar Plaza flat typology plan, presented as a premium editorial experience for modern living.',
-      highlights: ['Type A • 1245 sqft', 'Type B • 1475 sqft', 'Type C • 1405 sqft', 'Type D • 1420 sqft', 'Type E • 1515 sqft'],
+      description:
+        'The Muktar Plaza flat typology plan, presented as a premium architectural experience for modern living.',
+      highlights: [
+        'Type A • 1245 sqft',
+        'Type B • 1475 sqft',
+        'Type C • 1405 sqft',
+        'Type D • 1420 sqft',
+        'Type E • 1515 sqft',
+      ],
       type: 'image',
     },
     {
@@ -78,17 +102,20 @@ const assetsMap: Record<AssetCategory, Asset[]> = {
       title: 'Residential Arrival Experience',
       subtitle: 'Elegant residential gateway and landscaped entry',
       image: '/frames/8.jpg',
-      description: 'An actual Muktar Plaza visual showing the refined residential approach and premium street presence.',
+      description:
+        'A refined residential approach with a premium street presence.',
       type: 'image',
     },
   ],
+
   commercial: [
     {
       id: 'retail-gateway',
       title: 'Retail Gateway',
       subtitle: 'High-street commercial entrance',
       image: '/frames/9.jpg.jpeg',
-      description: 'A premium commercial arrival point for Muktar Plaza, designed to engage shoppers and tenants.',
+      description:
+        'A premium commercial arrival point designed to engage shoppers and tenants.',
       type: 'image',
     },
     {
@@ -96,7 +123,8 @@ const assetsMap: Record<AssetCategory, Asset[]> = {
       title: 'Brand Frontage',
       subtitle: 'Street-facing retail display zone',
       image: '/frames/4.jpg',
-      description: 'Actual project visual that highlights the commercial shopfront and pedestrian-facing architecture.',
+      description:
+        'A commercial shopfront visual highlighting pedestrian-facing architecture.',
       type: 'image',
     },
     {
@@ -104,17 +132,20 @@ const assetsMap: Record<AssetCategory, Asset[]> = {
       title: 'Commercial Atrium View',
       subtitle: 'Dynamic retail circulation area',
       image: '/frames/5.jpg',
-      description: 'A refined commercial showcase representing the retail hub within Muktar Plaza.',
+      description:
+        'A refined commercial showcase representing the retail hub within Muktar Plaza.',
       type: 'image',
     },
   ],
+
   views: [
     {
       id: 'east-elevation',
       title: 'North Elevation Perspective',
       subtitle: 'Signature exterior architecture',
       image: '/frames/1.jpg.jpeg',
-      description: 'A premium 3D elevation view showing the full Muktar Plaza facade.',
+      description:
+        'A premium 3D elevation view showing the full Muktar Plaza facade.',
       type: 'image',
     },
     {
@@ -122,7 +153,8 @@ const assetsMap: Record<AssetCategory, Asset[]> = {
       title: 'Rooftop Helipad Aerial',
       subtitle: 'Sky-level architectural model',
       image: '/frames/2.jpg.jpeg',
-      description: 'Aerial 3D view of the tower roof with landscaped terrace and helipad.',
+      description:
+        'Aerial 3D view of the tower roof with landscaped terrace and helipad.',
       type: 'image',
     },
     {
@@ -130,7 +162,8 @@ const assetsMap: Record<AssetCategory, Asset[]> = {
       title: 'Full Structure Perspective',
       subtitle: 'Garden-edge 3D building study',
       image: '/frames/3.jpg.jpeg',
-      description: 'An actual Muktar Plaza render that captures the building’s exterior presence.',
+      description:
+        'A project render capturing the building’s exterior presence.',
       type: 'image',
     },
     {
@@ -138,7 +171,8 @@ const assetsMap: Record<AssetCategory, Asset[]> = {
       title: 'Facade Perspective',
       subtitle: 'Detailed building context',
       image: '/frames/3 (1).png',
-      description: 'A larger dual-elevation view that highlights the building’s materiality and scale.',
+      description:
+        'A larger dual-elevation view highlighting materiality and scale.',
       type: 'image',
     },
     {
@@ -146,16 +180,19 @@ const assetsMap: Record<AssetCategory, Asset[]> = {
       title: '3D Top View',
       subtitle: 'Premium aerial perspective',
       image: '/frames/12.jpg',
-      description: 'A cinematic 3D top view of Muktar Plaza for strong architectural context.',
+      description:
+        'A cinematic top view providing strong architectural context.',
       type: 'image',
     },
   ],
+
   videos: [
     {
       id: 'video-preview',
       title: 'Muktar Plaza Project Preview',
       subtitle: 'Cinematic architecture presentation',
-      description: 'A premium motion study showcasing the plaza’s architecture and spatial concept.',
+      description:
+        'A premium motion study showcasing the plaza’s architecture and spatial concept.',
       src: '/frames/Untitled design (2).mp4',
       poster: '/frames/1.jpg.jpeg',
       type: 'video',
@@ -164,7 +201,8 @@ const assetsMap: Record<AssetCategory, Asset[]> = {
       id: 'video-walkthrough',
       title: 'Muktar Plaza Walkthrough',
       subtitle: 'Design and site cinematic study',
-      description: 'A dynamic walkthrough highlighting material details, circulation, and facade rhythm.',
+      description:
+        'A dynamic walkthrough highlighting material details, circulation, and facade rhythm.',
       src: '/frames/Untitled design (12).mp4',
       poster: '/frames/2.jpg.jpeg',
       type: 'video',
@@ -172,181 +210,391 @@ const assetsMap: Record<AssetCategory, Asset[]> = {
   ],
 }
 
+const springTransition = {
+  type: 'spring',
+  stiffness: 180,
+  damping: 24,
+  mass: 0.8,
+}
+
 export default function FloorPlans() {
-  const [activeCategory, setActiveCategory] = useState<AssetCategory>('plans')
+  const [activeCategory, setActiveCategory] =
+    useState<AssetCategory>('plans')
+
   const [activeIndex, setActiveIndex] = useState(0)
-  const [lightboxAsset, setLightboxAsset] = useState<Asset | null>(null)
+
+  const [lightboxAsset, setLightboxAsset] =
+    useState<Asset | null>(null)
+
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
+
+  const activeAssets = useMemo(
+    () => assetsMap[activeCategory],
+    [activeCategory]
+  )
+
+  const activeAsset = activeAssets[activeIndex]
 
   useEffect(() => {
     setActiveIndex(0)
+    setIsImageLoaded(false)
   }, [activeCategory])
 
-  const activeAssets = useMemo(() => assetsMap[activeCategory], [activeCategory])
-  const activeAsset = activeAssets[activeIndex]
-
-  // Lock scroll when lightbox is open
   useEffect(() => {
-    if (lightboxAsset) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
+    if (!lightboxAsset) {
+      document.body.style.overflow = ''
+      return
+    }
+
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = ''
     }
   }, [lightboxAsset])
 
-  // Close lightbox on Escape key
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setLightboxAsset(null)
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setLightboxAsset(null)
+      }
+
+      if (event.key === 'ArrowRight') {
+        setActiveIndex((current) =>
+          current === activeAssets.length - 1 ? 0 : current + 1
+        )
+      }
+
+      if (event.key === 'ArrowLeft') {
+        setActiveIndex((current) =>
+          current === 0 ? activeAssets.length - 1 : current - 1
+        )
+      }
     }
+
     window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [])
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [activeAssets.length])
+
+  const nextAsset = () => {
+    setActiveIndex((current) =>
+      current === activeAssets.length - 1 ? 0 : current + 1
+    )
+  }
+
+  const previousAsset = () => {
+    setActiveIndex((current) =>
+      current === 0 ? activeAssets.length - 1 : current - 1
+    )
+  }
+
+  const selectAsset = (index: number) => {
+    setIsImageLoaded(false)
+    setActiveIndex(index)
+  }
 
   return (
-    <section id="floorplans" className="relative py-32 px-6 md:px-12 max-w-7xl mx-auto z-10">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-        <div className="max-w-2xl">
-          <motion.span
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold block mb-4"
+    <section
+      id="floorplans"
+      className="relative z-10 mx-auto max-w-[1600px] px-5 py-24 sm:px-8 md:px-12 lg:py-32"
+    >
+      {/* HEADER */}
+
+      <div className="mb-12 flex flex-col gap-8 lg:mb-16 lg:flex-row lg:items-end lg:justify-between">
+        <div className="max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7 }}
+            className="mb-5 flex items-center gap-3"
           >
-            05 — Layout & Space
-          </motion.span>
+            <span className="h-px w-10 bg-gold-400" />
+
+            <span className="text-[10px] font-semibold uppercase tracking-[0.35em] text-gold-400">
+              05 — Layout & Space
+            </span>
+          </motion.div>
+
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="font-serif text-4xl md:text-5xl font-bold text-white"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.05 }}
+            className="font-serif text-4xl font-bold leading-[0.98] tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
-            Floor Plans & <span className="text-gold-gradient bg-clip-text text-transparent bg-gradient-to-r from-gold-200 via-gold-400 to-gold-600">Unit Configurations</span>
+            Floor Plans &{' '}
+            <span className="bg-gradient-to-r from-gold-200 via-gold-400 to-gold-600 bg-clip-text text-transparent">
+              Unit Configurations
+            </span>
           </motion.h2>
+
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-sm text-neutral-300 mt-6 leading-relaxed"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.12 }}
+            className="mt-6 max-w-2xl text-sm leading-7 text-neutral-400 sm:text-base"
           >
-            Experience Muktar Plaza through actual architectural layouts, residential unit plans, commercial frontage, and cinematic project visuals.
+            Explore architectural layouts, residential configurations,
+            commercial spaces and cinematic project views through a refined
+            editorial experience.
           </motion.p>
         </div>
-        
-        <div className="flex flex-wrap gap-3">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`px-5 py-3 rounded-full text-[11px] font-semibold uppercase tracking-[0.2em] transition-all duration-300 ${
-                activeCategory === category.id
-                  ? 'bg-gold-500 text-obsidian shadow-lg shadow-gold-500/30 scale-105'
-                  : 'glass-panel text-neutral-400 hover:text-white hover:border-gold-500/30'
-              }`}
-            >
-              {category.label}
-            </button>
-          ))}
-        </div>
+
+        {/* CATEGORY NAVIGATION */}
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="flex max-w-full gap-2 overflow-x-auto pb-2 lg:max-w-[650px] lg:justify-end"
+        >
+          {categories.map((category) => {
+            const isActive = activeCategory === category.id
+
+            return (
+              <button
+                key={category.id}
+                type="button"
+                onClick={() => setActiveCategory(category.id)}
+                className="relative shrink-0 overflow-hidden rounded-full border border-white/10 px-4 py-2.5 text-[9px] font-semibold uppercase tracking-[0.18em] transition-all duration-500 sm:px-5 sm:text-[10px]"
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="floorplan-category-pill"
+                    transition={springTransition}
+                    className="absolute inset-0 bg-gold-500"
+                  />
+                )}
+
+                <span
+                  className={`relative z-10 transition-colors duration-300 ${
+                    isActive
+                      ? 'text-obsidian'
+                      : 'text-neutral-400 hover:text-white'
+                  }`}
+                >
+                  {category.label}
+                </span>
+              </button>
+            )
+          })}
+        </motion.div>
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-        {/* Left Column: Navigation & Details */}
-        <div className="space-y-8">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {activeAssets.map((asset, idx) => (
-              <button
-                key={asset.id}
-                onClick={() => setActiveIndex(idx)}
-                className={`group text-left rounded-3xl border p-5 transition-all duration-500 ${
-                  activeIndex === idx
-                    ? 'border-gold-400/50 bg-white/10 shadow-xl shadow-gold-500/10 ring-1 ring-gold-400/20'
-                    : 'border-white/10 bg-obsidian/40 hover:border-gold-500/20 hover:bg-white/5'
-                }`}
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <div className="overflow-hidden">
-                    <p className={`text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ${
-                      activeIndex === idx ? 'text-gold-400' : 'text-neutral-500'
-                    }`}>
-                      {asset.type === 'video' ? 'Motion Study' : 'Architectural Visual'}
-                    </p>
-                    <h3 className="font-serif text-lg font-semibold text-white mt-1 truncate">{asset.title}</h3>
+      {/* MAIN EXPERIENCE */}
+
+      <div className="grid gap-6 lg:grid-cols-[minmax(300px,0.75fr)_minmax(0,1.25fr)] xl:gap-8">
+        {/* LEFT */}
+
+        <div className="flex min-w-0 flex-col">
+          {/* Asset selector */}
+
+          <div className="mb-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
+            {activeAssets.map((asset, index) => {
+              const isActive = activeIndex === index
+
+              return (
+                <motion.button
+                  key={asset.id}
+                  type="button"
+                  onClick={() => selectAsset(index)}
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.25 }}
+                  className={`group relative overflow-hidden rounded-2xl border p-4 text-left transition-all duration-500 sm:p-5 ${
+                    isActive
+                      ? 'border-gold-400/40 bg-white/[0.07]'
+                      : 'border-white/[0.07] bg-white/[0.02] hover:border-white/15 hover:bg-white/[0.04]'
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="active-floorplan-line"
+                      className="absolute inset-y-0 left-0 w-[2px] bg-gold-400"
+                    />
+                  )}
+
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="min-w-0">
+                      <div className="mb-2 flex items-center gap-2">
+                        <span
+                          className={`text-[8px] uppercase tracking-[0.25em] ${
+                            isActive
+                              ? 'text-gold-400'
+                              : 'text-neutral-600'
+                          }`}
+                        >
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+
+                        <span className="h-px w-5 bg-white/10" />
+
+                        <span className="text-[8px] uppercase tracking-[0.2em] text-neutral-600">
+                          {asset.type === 'video'
+                            ? 'Motion'
+                            : 'Architecture'}
+                        </span>
+                      </div>
+
+                      <h3 className="truncate font-serif text-lg font-semibold text-white">
+                        {asset.title}
+                      </h3>
+
+                      <p className="mt-2 line-clamp-2 text-xs leading-5 text-neutral-500">
+                        {asset.subtitle}
+                      </p>
+                    </div>
+
+                    <div
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-500 ${
+                        isActive
+                          ? 'border-gold-400/40 bg-gold-500 text-obsidian'
+                          : 'border-white/10 bg-white/[0.03] text-neutral-500 group-hover:border-gold-400/30 group-hover:text-gold-400'
+                      }`}
+                    >
+                      {asset.type === 'video' ? (
+                        <Play className="ml-0.5 h-3.5 w-3.5 fill-current" />
+                      ) : (
+                        <Maximize2 className="h-3.5 w-3.5" />
+                      )}
+                    </div>
                   </div>
-                  <div className={`flex h-10 w-10 items-center justify-center rounded-full transition-all duration-500 ${
-                    activeIndex === idx ? 'bg-gold-500 text-obsidian scale-110' : 'bg-white/10 text-neutral-400 group-hover:bg-gold-500/20 group-hover:text-gold-400'
-                  }`}>
-                    <Maximize2 className="w-4 h-4" />
-                  </div>
-                </div>
-                <p className="mt-3 text-xs text-neutral-400 line-clamp-2 leading-relaxed">{asset.subtitle}</p>
-              </button>
-            ))}
+                </motion.button>
+              )
+            })}
           </div>
 
-          {/* Asset Detail Card */}
-          <motion.div 
-            key={activeAsset.id}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="glass-panel rounded-[2rem] border border-gold-500/20 p-8 relative overflow-hidden"
-          >
-            <div className="flex flex-col gap-6 relative z-10">
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-gold-400 font-semibold">{activeAsset.type === 'video' ? 'Cinematic Preview' : 'Plan Details'}</p>
-                <h3 className="font-serif text-3xl font-bold text-white mt-3">{activeAsset.title}</h3>
+          {/* DETAILS */}
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`${activeCategory}-${activeAsset.id}`}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.45 }}
+              className="relative flex flex-1 flex-col overflow-hidden rounded-[2rem] border border-gold-500/15 bg-white/[0.025] p-6 sm:p-8"
+            >
+              <div className="pointer-events-none absolute -right-24 -top-24 h-48 w-48 rounded-full bg-gold-500/[0.05] blur-3xl" />
+
+              <div className="relative">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-gold-400">
+                  {activeAsset.type === 'video'
+                    ? 'Cinematic Preview'
+                    : 'Plan Details'}
+                </p>
+
+                <h3 className="mt-3 font-serif text-2xl font-bold leading-tight text-white sm:text-3xl">
+                  {activeAsset.title}
+                </h3>
+
+                <p className="mt-4 text-sm leading-7 text-neutral-400">
+                  {activeAsset.description}
+                </p>
               </div>
-              <p className="text-sm leading-7 text-neutral-300">{activeAsset.description}</p>
-              
+
               {activeAsset.highlights && (
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {activeAsset.highlights.map((item) => (
-                    <div key={item} className="rounded-2xl border border-white/5 bg-white/5 p-4 text-xs text-neutral-300 flex items-center gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-gold-500" />
+                <div className="relative mt-7 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  {activeAsset.highlights.map((item, index) => (
+                    <motion.div
+                      key={item}
+                      initial={{ opacity: 0, x: -8 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{
+                        duration: 0.35,
+                        delay: index * 0.05,
+                      }}
+                      className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.025] px-4 py-3 text-[11px] text-neutral-400"
+                    >
+                      <span className="h-1 w-1 shrink-0 rounded-full bg-gold-400" />
                       {item}
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               )}
 
-              <div className="flex flex-wrap gap-4 pt-4">
+              <div className="relative mt-auto flex flex-wrap gap-3 pt-8">
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 text-obsidian font-bold text-xs uppercase tracking-[0.2em] shadow-lg shadow-gold-500/20 transition-all hover:scale-105 active:scale-95"
+                  className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 px-6 py-3.5 text-[9px] font-bold uppercase tracking-[0.2em] text-obsidian transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-gold-500/20"
                 >
-                  {activeCategory === 'commercial' ? 'Explore Commercial Spaces' : 'Request Detailed Plan'}
-                  <ArrowRight className="w-4 h-4" />
+                  {activeCategory === 'commercial'
+                    ? 'Explore Commercial Spaces'
+                    : 'Request Detailed Plan'}
+
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
+
                 <button
+                  type="button"
                   onClick={() => setLightboxAsset(activeAsset)}
-                  className="inline-flex items-center gap-2 px-6 py-4 rounded-full border border-white/10 bg-white/5 text-xs uppercase tracking-[0.2em] text-white transition hover:bg-white/10 hover:border-gold-500/30"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-3.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-neutral-300 transition-all duration-300 hover:border-gold-400/30 hover:bg-white/[0.06] hover:text-white"
                 >
-                  <Maximize2 className="w-4 h-4" />
+                  <Maximize2 className="h-3.5 w-3.5" />
                   Fullscreen
                 </button>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        {/* Right Column: Visual Display */}
+        {/* RIGHT — HERO VISUAL */}
+
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative rounded-[2.5rem] overflow-hidden border border-white/10 bg-[#070b11] shadow-2xl shadow-black/60 min-h-[520px] group"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.9 }}
+          className="relative min-h-[440px] overflow-hidden rounded-[2rem] border border-white/10 bg-[#070b11] shadow-2xl shadow-black/50 sm:min-h-[560px] lg:min-h-[700px]"
         >
+          {/* Top metadata */}
+
+          <div className="pointer-events-none absolute left-6 right-6 top-6 z-30 flex items-start justify-between sm:left-8 sm:right-8 sm:top-8">
+            <div>
+              <p className="text-[8px] font-bold uppercase tracking-[0.35em] text-gold-400">
+                {categories.find(
+                  (category) => category.id === activeCategory
+                )?.label}
+              </p>
+
+              <p className="mt-1 text-[9px] uppercase tracking-[0.2em] text-white/40">
+                Muktar Plaza
+              </p>
+            </div>
+
+            <div className="rounded-full border border-white/10 bg-black/20 px-3 py-1.5 text-[8px] tracking-[0.2em] text-white/50 backdrop-blur-xl">
+              {String(activeIndex + 1).padStart(2, '0')} /{' '}
+              {String(activeAssets.length).padStart(2, '0')}
+            </div>
+          </div>
+
+          {/* VISUAL */}
+
           <AnimatePresence mode="wait">
             <motion.div
               key={activeAsset.id}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
-              className="h-full w-full relative"
+              initial={{
+                opacity: 0,
+                scale: 1.035,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                scale: 0.985,
+              }}
+              transition={{
+                duration: 0.7,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="absolute inset-0"
             >
               {activeAsset.type === 'video' ? (
                 <video
@@ -358,90 +606,206 @@ export default function FloorPlans() {
                   controls
                   preload="metadata"
                   poster={activeAsset.poster}
-                  className="h-full w-full bg-black object-cover"
+                  className="h-full w-full object-cover"
                 >
-                  <source src={activeAsset.src} type="video/mp4" />
-                  Your browser does not support the video tag.
+                  <source
+                    src={activeAsset.src}
+                    type="video/mp4"
+                  />
                 </video>
               ) : (
-                <img
-                  src={activeAsset.image}
-                  alt={activeAsset.title}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+                <>
+                  {!isImageLoaded && (
+                    <div className="absolute inset-0 z-10 animate-pulse bg-white/[0.03]" />
+                  )}
+
+                  <img
+                    src={activeAsset.image}
+                    alt={activeAsset.title}
+                    onLoad={() => setIsImageLoaded(true)}
+                    className={`h-full w-full object-cover transition-all duration-1000 ${
+                      isImageLoaded ? 'scale-100 opacity-100' : 'scale-[1.03] opacity-0'
+                    }`}
+                  />
+                </>
               )}
             </motion.div>
           </AnimatePresence>
 
-          {/* Overlay Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-80" />
-          
-          {/* Floating Info Card */}
-          <div className="absolute bottom-6 left-6 right-6 rounded-3xl bg-obsidian/40 border border-white/10 p-6 backdrop-blur-2xl text-white transition-all duration-300 group-hover:bg-obsidian/60">
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex flex-col gap-1">
-                <p className="text-[10px] uppercase tracking-[0.3em] text-gold-400 font-bold">
-                  {categories.find((item) => item.id === activeCategory)?.label}
-                </p>
-                <h3 className="font-serif text-2xl font-bold">{activeAsset.title}</h3>
-                <p className="text-sm text-neutral-300 line-clamp-1">{activeAsset.subtitle}</p>
-              </div>
-            </div>
+          {/* CINEMATIC GRADIENTS */}
+
+          <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-black/45 via-transparent to-black/80" />
+
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-1/2 bg-gradient-to-t from-black/80 to-transparent" />
+
+          {/* NAVIGATION */}
+
+          <div className="absolute bottom-6 right-6 z-30 flex gap-2 sm:bottom-8 sm:right-8">
+            <button
+              type="button"
+              onClick={previousAsset}
+              aria-label="Previous asset"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/30 text-white backdrop-blur-xl transition-all duration-300 hover:border-gold-400/40 hover:bg-gold-500 hover:text-obsidian"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+
+            <button
+              type="button"
+              onClick={nextAsset}
+              aria-label="Next asset"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/30 text-white backdrop-blur-xl transition-all duration-300 hover:border-gold-400/40 hover:bg-gold-500 hover:text-obsidian"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+
+          {/* BOTTOM INFO */}
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeAsset.id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.45 }}
+              className="absolute bottom-6 left-6 right-32 z-20 sm:bottom-8 sm:left-8"
+            >
+              <p className="mb-2 text-[8px] font-semibold uppercase tracking-[0.3em] text-gold-400">
+                {activeAsset.type === 'video'
+                  ? 'Motion Study'
+                  : 'Architectural Visual'}
+              </p>
+
+              <h3 className="font-serif text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-4xl">
+                {activeAsset.title}
+              </h3>
+
+              <p className="mt-2 max-w-xl text-xs leading-5 text-neutral-300 sm:text-sm">
+                {activeAsset.subtitle}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* PROGRESS */}
+
+          <div className="absolute bottom-0 left-0 right-0 z-30 flex h-[2px]">
+            {activeAssets.map((asset, index) => (
+              <button
+                key={asset.id}
+                type="button"
+                onClick={() => selectAsset(index)}
+                className="group relative h-full flex-1 bg-white/10"
+                aria-label={`View ${asset.title}`}
+              >
+                <motion.span
+                  animate={{
+                    scaleX: activeIndex === index ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.4 }}
+                  className="absolute inset-0 origin-left bg-gold-400"
+                />
+              </button>
+            ))}
           </div>
         </motion.div>
       </div>
 
-      {/* Fullscreen Lightbox */}
+      {/* LIGHTBOX */}
+
       <AnimatePresence>
         {lightboxAsset && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-obsidian/95 backdrop-blur-md p-4 md:p-10"
+            onClick={() => setLightboxAsset(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-3 backdrop-blur-xl sm:p-6 lg:p-10"
           >
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative w-full max-w-7xl rounded-[2rem] overflow-hidden border border-gold-500/30 bg-black shadow-2xl"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 15 }}
+              transition={{ duration: 0.45 }}
+              onClick={(event) => event.stopPropagation()}
+              className="relative flex max-h-[94vh] w-full max-w-[1500px] flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#080b10] shadow-2xl lg:flex-row"
             >
+              {/* CLOSE */}
+
               <button
+                type="button"
                 onClick={() => setLightboxAsset(null)}
-                className="absolute top-6 right-6 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full bg-obsidian/80 text-white transition-all hover:bg-gold-500 hover:text-obsidian backdrop-blur-md border border-white/10"
+                aria-label="Close fullscreen"
+                className="absolute right-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white backdrop-blur-xl transition-all hover:border-gold-400/30 hover:bg-gold-500 hover:text-obsidian sm:right-6 sm:top-6"
               >
-                <X className="w-5 h-5" />
+                <X className="h-4 w-4" />
               </button>
 
-              <div className="flex flex-col lg:flex-row">
-                <div className="relative w-full lg:w-3/4 bg-black flex items-center justify-center">
-                  {lightboxAsset.type === 'video' ? (
-                    <video 
-                      controls 
-                      autoPlay 
-                      muted 
-                      playsInline 
-                      className="max-h-[80vh] w-full object-contain"
-                    >
-                      <source src={lightboxAsset.src} type="video/mp4" />
-                    </video>
-                  ) : (
-                    <img src={lightboxAsset.image} alt={lightboxAsset.title} className="max-h-[85vh] w-full object-contain" />
-                  )}
-                </div>
-                
-                <div className="w-full lg:w-1/4 p-8 md:p-12 bg-obsidian flex flex-col justify-center border-l border-white/10">
-                  <p className="text-xs uppercase tracking-[0.3em] text-gold-400 font-bold mb-4">Project Detail</p>
-                  <h3 className="font-serif text-3xl font-bold text-white mb-4">{lightboxAsset.title}</h3>
-                  <p className="text-neutral-300 text-sm leading-relaxed mb-8">{lightboxAsset.description}</p>
-                  
-                  <button 
-                    onClick={() => setLightboxAsset(null)}
-                    className="w-full py-4 rounded-full border border-white/10 text-xs uppercase tracking-widest text-white hover:bg-white/10 transition-colors"
+              {/* MEDIA */}
+
+              <div className="relative flex min-h-[45vh] flex-1 items-center justify-center overflow-hidden bg-black lg:min-h-0">
+                {lightboxAsset.type === 'video' ? (
+                  <video
+                    controls
+                    autoPlay
+                    muted
+                    playsInline
+                    className="max-h-[75vh] w-full object-contain"
                   >
-                    Close Preview
-                  </button>
-                </div>
+                    <source
+                      src={lightboxAsset.src}
+                      type="video/mp4"
+                    />
+                  </video>
+                ) : (
+                  <img
+                    src={lightboxAsset.image}
+                    alt={lightboxAsset.title}
+                    className="max-h-[75vh] w-full object-contain"
+                  />
+                )}
+              </div>
+
+              {/* DETAILS */}
+
+              <div className="flex w-full shrink-0 flex-col justify-center border-t border-white/10 bg-[#080b10] p-6 sm:p-8 lg:w-[340px] lg:border-l lg:border-t-0 lg:p-10 xl:w-[400px]">
+                <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-gold-400">
+                  Project Detail
+                </p>
+
+                <h3 className="mt-4 font-serif text-2xl font-bold leading-tight text-white sm:text-3xl">
+                  {lightboxAsset.title}
+                </h3>
+
+                <p className="mt-3 text-xs uppercase tracking-[0.12em] text-neutral-600">
+                  {lightboxAsset.subtitle}
+                </p>
+
+                <p className="mt-6 text-sm leading-7 text-neutral-400">
+                  {lightboxAsset.description}
+                </p>
+
+                {lightboxAsset.highlights && (
+                  <div className="mt-6 space-y-2">
+                    {lightboxAsset.highlights.map((item) => (
+                      <div
+                        key={item}
+                        className="flex items-center gap-3 border-b border-white/[0.06] py-2.5 text-xs text-neutral-400"
+                      >
+                        <span className="h-1 w-1 rounded-full bg-gold-400" />
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <button
+                  type="button"
+                  onClick={() => setLightboxAsset(null)}
+                  className="mt-8 rounded-full border border-white/10 py-3.5 text-[9px] font-semibold uppercase tracking-[0.25em] text-white transition-all hover:border-gold-400/30 hover:bg-white/[0.04]"
+                >
+                  Close Preview
+                </button>
               </div>
             </motion.div>
           </motion.div>
