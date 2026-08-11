@@ -40,54 +40,100 @@ const categories: { id: AssetCategory; label: string }[] = [
   { id: 'videos', label: 'VIDEOS' },
 ]
 
+/*
+|--------------------------------------------------------------------------
+| MUKTAR PLAZA ASSETS
+|--------------------------------------------------------------------------
+| Replace only the image paths when you have the final plan images.
+|
+| Recommended:
+| 01 Full Project Plan
+| 02 Parking Plan
+| 03 Shop Plan
+| 04 Commercial Plan
+| 05 Residential Plan
+| 06 Roof Floor Plan
+| 07 Rooftop Floor Plan
+|--------------------------------------------------------------------------
+*/
+
 const assetsMap: Record<AssetCategory, Asset[]> = {
   plans: [
     {
-      id: 'roof-plan',
-      title: 'Roof Floor Plan',
-      subtitle: 'Premium retail and amenity layout with landscaped terraces',
-      image: '/frames/10.jpg',
+      id: 'full-project-plan',
+      title: 'Full Project Plan',
+      subtitle: 'Complete Muktar Plaza master planning overview',
+      image: '/frames/full-project-plan.jpg',
       description:
-        'A precise architectural plan showing rooftop circulation, public terraces, and service access.',
+        'A complete architectural overview of Muktar Plaza showing the overall project organization, building footprint, access, circulation, commercial and residential planning, parking, and key project zones.',
+      highlights: [
+        'Complete Project Layout',
+        'Site & Building Arrangement',
+        'Vehicle & Pedestrian Circulation',
+        'Commercial & Residential Zones',
+        'Parking & Access Planning',
+      ],
       type: 'image',
     },
-    {
-      id: 'top-plan',
-      title: 'Rooftop Floor Plan',
-      subtitle: 'Upper-level event and service deck design',
-      image: '/frames/11.jpg',
-      description:
-        'A detailed rooftop arrangement for elevated commercial frontage and customer flow.',
-      type: 'image',
-    },
-    {
-      id: 'typology-overview',
-      title: 'Residential Typology Plan',
-      subtitle: 'Apartment layout study for every unit type',
-      image: '/frames/Untitled (2048 x 1649 px).png',
-      description:
-        'Elegant residential flat plans with Type A, B, C, D and E configurations displayed clearly.',
-      type: 'image',
-    },
-    {
-      id: 'unit-perspective',
-      title: 'Residential Unit Study',
-      subtitle: 'Spatial flow and vertical planning overview',
-      image: '/frames/Untitled (1280 x 720 px).png',
-      description:
-        'A premium plan visualization showing core residential circulation and unit access.',
-      type: 'image',
-    },
-  ],
 
-  residential: [
     {
-      id: 'flat-types',
-      title: 'Residential Flat Plans',
-      subtitle: 'Apartment configurations for modern living',
+      id: 'parking-plan',
+      title: 'Parking Plan',
+      subtitle: 'Vehicle access, parking and circulation layout',
+      image: '/frames/parking-plan.jpg',
+      description:
+        'A dedicated parking and circulation plan showing vehicle movement, parking arrangement, access points, and practical circulation around the project.',
+      highlights: [
+        'Parking Arrangement',
+        'Vehicle Entry & Exit',
+        'Internal Circulation',
+        'Access Planning',
+        'Service Movement',
+      ],
+      type: 'image',
+    },
+
+    {
+      id: 'shop-plan',
+      title: 'Shop Plan',
+      subtitle: 'Commercial shop layout and retail circulation',
+      image: '/frames/shop-plan.jpg',
+      description:
+        'A dedicated shop plan presenting the commercial retail arrangement, shop positioning, customer circulation, access and practical frontage planning.',
+      highlights: [
+        'Retail Shop Layout',
+        'Shop Frontage',
+        'Customer Circulation',
+        'Commercial Access',
+        'Usable Business Space',
+      ],
+      type: 'image',
+    },
+
+    {
+      id: 'commercial-plan',
+      title: 'Commercial Plan',
+      subtitle: 'Commercial floor planning and business spaces',
+      image: '/frames/commercial-plan.jpg',
+      description:
+        'A commercial floor planning overview showing how business spaces, circulation, access and supporting areas are organized within Muktar Plaza.',
+      highlights: [
+        'Commercial Floor Layout',
+        'Business Space Planning',
+        'Vertical Circulation',
+        'Common Access Areas',
+        'Practical Commercial Flow',
+      ],
+      type: 'image',
+    },
+
+    {
+      id: 'residential-plan',
+      title: 'Residential Plan',
+      subtitle: 'Residential apartment layout and unit configuration',
       image: '/frames/Untitled (2048 x 1649 px).png',
       description:
-        'The Muktar Plaza flat typology plan, presented as a premium architectural experience for modern living.',
+        'The residential planning overview for Muktar Plaza, showing apartment configurations, circulation, room planning, access and the overall residential layout.',
       highlights: [
         'Type A • 1245 sqft',
         'Type B • 1475 sqft',
@@ -97,112 +143,205 @@ const assetsMap: Record<AssetCategory, Asset[]> = {
       ],
       type: 'image',
     },
+
     {
-      id: 'residential-entry',
+      id: 'roof-floor-plan',
+      title: 'Roof Floor Plan',
+      subtitle: 'Roof-level architectural and service planning',
+      image: '/frames/10.jpg',
+      description:
+        'A detailed roof floor plan showing rooftop circulation, service access, open areas and architectural planning at the roof level.',
+      highlights: [
+        'Roof-Level Layout',
+        'Service Access',
+        'Circulation Planning',
+        'Open Terrace Areas',
+        'Architectural Arrangement',
+      ],
+      type: 'image',
+    },
+
+    {
+      id: 'rooftop-floor-plan',
+      title: 'Rooftop Floor Plan',
+      subtitle: 'Upper rooftop deck and amenity planning',
+      image: '/frames/11.jpg',
+      description:
+        'A rooftop floor planning study presenting the upper-level arrangement, open areas, service zones and rooftop architectural organization.',
+      highlights: [
+        'Rooftop Arrangement',
+        'Open Deck Areas',
+        'Service Zones',
+        'Access & Circulation',
+        'Upper-Level Planning',
+      ],
+      type: 'image',
+    },
+  ],
+
+  residential: [
+    {
+      id: 'residential-flat-plans',
+      title: 'Residential Flat Plans',
+      subtitle: 'Apartment configurations for modern living',
+      image: '/frames/Untitled (2048 x 1649 px).png',
+      description:
+        'Explore the residential apartment configurations planned for Muktar Plaza, with multiple unit types designed around practical room planning, circulation, comfort and everyday living.',
+      highlights: [
+        'Type A • 1245 sqft',
+        'Type B • 1475 sqft',
+        'Type C • 1405 sqft',
+        'Type D • 1420 sqft',
+        'Type E • 1515 sqft',
+      ],
+      type: 'image',
+    },
+
+    {
+      id: 'residential-arrival',
       title: 'Residential Arrival Experience',
-      subtitle: 'Elegant residential gateway and landscaped entry',
+      subtitle: 'Elegant residential gateway and entry',
       image: '/frames/8.jpg',
       description:
-        'A refined residential approach with a premium street presence.',
+        'A refined residential arrival perspective highlighting the building entrance, facade character, landscaping and overall residential presence.',
       type: 'image',
     },
   ],
 
   commercial: [
     {
+      id: 'commercial-shop-plan',
+      title: 'Shop Plan',
+      subtitle: 'Dedicated retail shop layout',
+      image: '/frames/shop-plan.jpg',
+      description:
+        'A dedicated retail planning view showing shop arrangement, frontage, circulation and practical commercial access.',
+      highlights: [
+        'Retail Shop Arrangement',
+        'Commercial Frontage',
+        'Customer Access',
+        'Circulation Planning',
+      ],
+      type: 'image',
+    },
+
+    {
+      id: 'commercial-floor-plan',
+      title: 'Commercial Plan',
+      subtitle: 'Business and commercial floor layout',
+      image: '/frames/commercial-plan.jpg',
+      description:
+        'A commercial floor layout designed around practical business use, accessibility, circulation and customer-facing spaces.',
+      highlights: [
+        'Commercial Floor Layout',
+        'Business Space Planning',
+        'Access & Circulation',
+        'Common Areas',
+      ],
+      type: 'image',
+    },
+
+    {
       id: 'retail-gateway',
       title: 'Retail Gateway',
       subtitle: 'High-street commercial entrance',
       image: '/frames/9.jpg.jpeg',
       description:
-        'A premium commercial arrival point designed to engage shoppers and tenants.',
+        'A premium commercial arrival point designed to create a strong first impression for shoppers, businesses and tenants.',
       type: 'image',
     },
+
     {
-      id: 'shopfront-lobby',
+      id: 'brand-frontage',
       title: 'Brand Frontage',
       subtitle: 'Street-facing retail display zone',
       image: '/frames/4.jpg',
       description:
-        'A commercial shopfront visual highlighting pedestrian-facing architecture.',
+        'A commercial frontage visual highlighting the retail-facing architectural character and street presence of Muktar Plaza.',
       type: 'image',
     },
+
     {
-      id: 'commercial-dock',
+      id: 'commercial-atrium',
       title: 'Commercial Atrium View',
       subtitle: 'Dynamic retail circulation area',
       image: '/frames/5.jpg',
       description:
-        'A refined commercial showcase representing the retail hub within Muktar Plaza.',
+        'A refined commercial perspective representing circulation, shared spaces and the retail experience within Muktar Plaza.',
       type: 'image',
     },
   ],
 
   views: [
     {
-      id: 'east-elevation',
+      id: 'north-elevation',
       title: 'North Elevation Perspective',
       subtitle: 'Signature exterior architecture',
       image: '/frames/1.jpg.jpeg',
       description:
-        'A premium 3D elevation view showing the full Muktar Plaza facade.',
+        'A premium 3D elevation view showing the architectural character and overall facade composition of Muktar Plaza.',
       type: 'image',
     },
+
     {
-      id: 'helipad-view',
-      title: 'Rooftop Helipad Aerial',
-      subtitle: 'Sky-level architectural model',
+      id: 'rooftop-aerial',
+      title: 'Rooftop Aerial View',
+      subtitle: 'Sky-level architectural perspective',
       image: '/frames/2.jpg.jpeg',
       description:
-        'Aerial 3D view of the tower roof with landscaped terrace and helipad.',
+        'An aerial 3D view showing the upper portion of the building and its surrounding architectural context.',
       type: 'image',
     },
+
     {
-      id: 'south-perspective',
+      id: 'full-structure',
       title: 'Full Structure Perspective',
-      subtitle: 'Garden-edge 3D building study',
+      subtitle: 'Complete building exterior study',
       image: '/frames/3.jpg.jpeg',
       description:
-        'A project render capturing the building’s exterior presence.',
+        'A project render capturing the overall exterior presence, building form and surrounding landscape context.',
       type: 'image',
     },
+
     {
-      id: 'elevation-study',
+      id: 'facade-perspective',
       title: 'Facade Perspective',
       subtitle: 'Detailed building context',
       image: '/frames/3 (1).png',
       description:
-        'A larger dual-elevation view highlighting materiality and scale.',
+        'A detailed architectural perspective highlighting the building facade, scale, glazing and material composition.',
       type: 'image',
     },
+
     {
-      id: 'top-study',
+      id: 'top-view',
       title: '3D Top View',
       subtitle: 'Premium aerial perspective',
       image: '/frames/12.jpg',
       description:
-        'A cinematic top view providing strong architectural context.',
+        'A cinematic top view providing a broader understanding of the project form, roof arrangement and architectural context.',
       type: 'image',
     },
   ],
 
   videos: [
     {
-      id: 'video-preview',
+      id: 'project-preview',
       title: 'Muktar Plaza Project Preview',
       subtitle: 'Cinematic architecture presentation',
       description:
-        'A premium motion study showcasing the plaza’s architecture and spatial concept.',
+        'A premium motion study showcasing the architecture, building form and spatial concept of Muktar Plaza.',
       src: '/frames/Untitled design (2).mp4',
       poster: '/frames/1.jpg.jpeg',
       type: 'video',
     },
+
     {
-      id: 'video-walkthrough',
+      id: 'project-walkthrough',
       title: 'Muktar Plaza Walkthrough',
-      subtitle: 'Design and site cinematic study',
+      subtitle: 'Design and project cinematic study',
       description:
-        'A dynamic walkthrough highlighting material details, circulation, and facade rhythm.',
+        'A dynamic walkthrough highlighting architectural details, circulation, facade rhythm and the overall project experience.',
       src: '/frames/Untitled design (12).mp4',
       poster: '/frames/2.jpg.jpeg',
       type: 'video',
@@ -283,12 +422,14 @@ export default function FloorPlans() {
     setActiveIndex((current) =>
       current === activeAssets.length - 1 ? 0 : current + 1
     )
+    setIsImageLoaded(false)
   }
 
   const previousAsset = () => {
     setActiveIndex((current) =>
       current === 0 ? activeAssets.length - 1 : current - 1
     )
+    setIsImageLoaded(false)
   }
 
   const selectAsset = (index: number) => {
@@ -315,7 +456,7 @@ export default function FloorPlans() {
             <span className="h-px w-10 bg-gold-400" />
 
             <span className="text-[10px] font-semibold uppercase tracking-[0.35em] text-gold-400">
-              05 — Layout & Space
+              05 — Plans & Space
             </span>
           </motion.div>
 
@@ -326,9 +467,9 @@ export default function FloorPlans() {
             transition={{ duration: 0.8, delay: 0.05 }}
             className="font-serif text-4xl font-bold leading-[0.98] tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
-            Floor Plans &{' '}
+            Muktar Plaza{' '}
             <span className="bg-gradient-to-r from-gold-200 via-gold-400 to-gold-600 bg-clip-text text-transparent">
-              Unit Configurations
+              Plans & Spaces
             </span>
           </motion.h2>
 
@@ -339,9 +480,9 @@ export default function FloorPlans() {
             transition={{ duration: 0.8, delay: 0.12 }}
             className="mt-6 max-w-2xl text-sm leading-7 text-neutral-400 sm:text-base"
           >
-            Explore architectural layouts, residential configurations,
-            commercial spaces and cinematic project views through a refined
-            editorial experience.
+            Explore the complete planning vision of Muktar Plaza — from the
+            full project layout and parking arrangement to dedicated shop,
+            commercial, residential, roof and rooftop floor plans.
           </motion.p>
         </div>
 
@@ -393,7 +534,7 @@ export default function FloorPlans() {
         {/* LEFT */}
 
         <div className="flex min-w-0 flex-col">
-          {/* Asset selector */}
+          {/* ASSET SELECTOR */}
 
           <div className="mb-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
             {activeAssets.map((asset, index) => {
@@ -486,7 +627,9 @@ export default function FloorPlans() {
                 <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-gold-400">
                   {activeAsset.type === 'video'
                     ? 'Cinematic Preview'
-                    : 'Plan Details'}
+                    : activeCategory === 'plans'
+                      ? 'Plan Details'
+                      : 'Project Details'}
                 </p>
 
                 <h3 className="mt-3 font-serif text-2xl font-bold leading-tight text-white sm:text-3xl">
@@ -525,7 +668,13 @@ export default function FloorPlans() {
                 >
                   {activeCategory === 'commercial'
                     ? 'Explore Commercial Spaces'
-                    : 'Request Detailed Plan'}
+                    : activeCategory === 'residential'
+                      ? 'Explore Residential Flats'
+                      : activeCategory === 'plans'
+                        ? 'Request Detailed Plan'
+                        : activeCategory === 'videos'
+                          ? 'Request Project Details'
+                          : 'Explore Muktar Plaza'}
 
                   <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
@@ -552,14 +701,16 @@ export default function FloorPlans() {
           transition={{ duration: 0.9 }}
           className="relative min-h-[440px] overflow-hidden rounded-[2rem] border border-white/10 bg-[#070b11] shadow-2xl shadow-black/50 sm:min-h-[560px] lg:min-h-[700px]"
         >
-          {/* Top metadata */}
+          {/* TOP METADATA */}
 
           <div className="pointer-events-none absolute left-6 right-6 top-6 z-30 flex items-start justify-between sm:left-8 sm:right-8 sm:top-8">
             <div>
               <p className="text-[8px] font-bold uppercase tracking-[0.35em] text-gold-400">
-                {categories.find(
-                  (category) => category.id === activeCategory
-                )?.label}
+                {
+                  categories.find(
+                    (category) => category.id === activeCategory
+                  )?.label
+                }
               </p>
 
               <p className="mt-1 text-[9px] uppercase tracking-[0.2em] text-white/40">
@@ -623,8 +774,11 @@ export default function FloorPlans() {
                     src={activeAsset.image}
                     alt={activeAsset.title}
                     onLoad={() => setIsImageLoaded(true)}
+                    onError={() => setIsImageLoaded(true)}
                     className={`h-full w-full object-cover transition-all duration-1000 ${
-                      isImageLoaded ? 'scale-100 opacity-100' : 'scale-[1.03] opacity-0'
+                      isImageLoaded
+                        ? 'scale-100 opacity-100'
+                        : 'scale-[1.03] opacity-0'
                     }`}
                   />
                 </>
@@ -674,7 +828,9 @@ export default function FloorPlans() {
               <p className="mb-2 text-[8px] font-semibold uppercase tracking-[0.3em] text-gold-400">
                 {activeAsset.type === 'video'
                   ? 'Motion Study'
-                  : 'Architectural Visual'}
+                  : activeCategory === 'plans'
+                    ? 'Architectural Plan'
+                    : 'Architectural Visual'}
               </p>
 
               <h3 className="font-serif text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-4xl">
@@ -799,10 +955,19 @@ export default function FloorPlans() {
                   </div>
                 )}
 
+                <a
+                  href="#contact"
+                  onClick={() => setLightboxAsset(null)}
+                  className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 py-3.5 text-[9px] font-bold uppercase tracking-[0.2em] text-obsidian transition-all hover:scale-[1.02]"
+                >
+                  Request This Plan
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </a>
+
                 <button
                   type="button"
                   onClick={() => setLightboxAsset(null)}
-                  className="mt-8 rounded-full border border-white/10 py-3.5 text-[9px] font-semibold uppercase tracking-[0.25em] text-white transition-all hover:border-gold-400/30 hover:bg-white/[0.04]"
+                  className="mt-3 rounded-full border border-white/10 py-3.5 text-[9px] font-semibold uppercase tracking-[0.25em] text-white transition-all hover:border-gold-400/30 hover:bg-white/[0.04]"
                 >
                   Close Preview
                 </button>
