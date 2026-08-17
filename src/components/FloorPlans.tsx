@@ -11,7 +11,7 @@ import {
   X,
 } from 'lucide-react'
 
-type AssetType = 'image' | 'video'
+type AssetType = 'image' | 'youtube'
 
 type Asset = {
   id: string
@@ -20,341 +20,300 @@ type Asset = {
   description: string
   type: AssetType
   image?: string
-  src?: string
-  poster?: string
+  youtubeId?: string
+  youtubeStart?: number
   highlights?: string[]
 }
 
-type AssetCategory =
-  | 'plans'
-  | 'residential'
-  | 'commercial'
-  | 'views'
-  | 'videos'
+type AssetCategory = 'plans' | 'videos'
 
-const categories: { id: AssetCategory; label: string }[] = [
-  { id: 'plans', label: 'FLOOR PLANS' },
-  { id: 'residential', label: 'RESIDENTIAL' },
-  { id: 'commercial', label: 'COMMERCIAL' },
-  { id: 'views', label: '3D VIEWS' },
-  { id: 'videos', label: 'VIDEOS' },
+const categories: {
+  id: AssetCategory
+  label: string
+}[] = [
+  {
+    id: 'plans',
+    label: 'FLOOR PLANS',
+  },
+  {
+    id: 'videos',
+    label: 'VIDEOS',
+  },
 ]
 
-/*
-|--------------------------------------------------------------------------
-| MUKTAR PLAZA ASSETS
-|--------------------------------------------------------------------------
-| Replace only the image paths when you have the final plan images.
-|
-| Recommended:
-| 01 Full Project Plan
-| 02 Parking Plan
-| 03 Shop Plan
-| 04 Commercial Plan
-| 05 Residential Plan
-| 06 Roof Floor Plan
-| 07 Rooftop Floor Plan
-|--------------------------------------------------------------------------
-*/
+const frame = (name: string) => `/frames/${name}`
+
+/* ================================================================
+   MUKTAR PLAZA — EXACT FILE NAMES FROM public/frames
+================================================================ */
 
 const assetsMap: Record<AssetCategory, Asset[]> = {
+  /* ================================================================
+     FLOOR PLANS
+  ================================================================= */
+
   plans: [
     {
-      id: 'full-project-plan',
-      title: 'Full Project Plan',
-      subtitle: 'Complete Muktar Plaza master planning overview',
-      image: '/frames/full-project-plan.jpg',
+      id: 'project-information',
+      title: 'Project Information',
+      subtitle: 'Complete project overview',
+      image: frame('information.png'),
       description:
-        'A complete architectural overview of Muktar Plaza showing the overall project organization, building footprint, access, circulation, commercial and residential planning, parking, and key project zones.',
+        'Complete project information and planning overview of Muktar Plaza, presenting the overall development concept, building organization and architectural planning.',
       highlights: [
-        'Complete Project Layout',
-        'Site & Building Arrangement',
-        'Vehicle & Pedestrian Circulation',
-        'Commercial & Residential Zones',
-        'Parking & Access Planning',
+        'Project Overview',
+        'Architectural Planning',
+        'Building Organization',
+        'Commercial & Residential Planning',
       ],
       type: 'image',
     },
 
     {
-      id: 'parking-plan',
-      title: 'Parking Plan',
-      subtitle: 'Vehicle access, parking and circulation layout',
-      image: '/frames/parking-plan.jpg',
+      id: 'semi-basement-floor-plan',
+      title: 'Semi Basement Floor Plan',
+      subtitle: 'Parking and service planning',
+      image: frame('semi basement.png'),
       description:
-        'A dedicated parking and circulation plan showing vehicle movement, parking arrangement, access points, and practical circulation around the project.',
+        'The semi basement floor plan presents the parking, circulation, access and supporting service areas planned for Muktar Plaza.',
       highlights: [
         'Parking Arrangement',
-        'Vehicle Entry & Exit',
-        'Internal Circulation',
+        'Vehicle Circulation',
         'Access Planning',
-        'Service Movement',
+        'Service Areas',
       ],
       type: 'image',
     },
 
     {
-      id: 'shop-plan',
-      title: 'Shop Plan',
-      subtitle: 'Commercial shop layout and retail circulation',
-      image: '/frames/shop-plan.jpg',
+      id: 'ground-floor-plan',
+      title: 'Ground Floor Plan',
+      subtitle: 'Ground-level commercial planning',
+      image: frame('ground floor.png'),
       description:
-        'A dedicated shop plan presenting the commercial retail arrangement, shop positioning, customer circulation, access and practical frontage planning.',
+        'Ground floor architectural planning showing commercial spaces, access, circulation and supporting areas.',
       highlights: [
-        'Retail Shop Layout',
-        'Shop Frontage',
-        'Customer Circulation',
-        'Commercial Access',
-        'Usable Business Space',
+        'Commercial Spaces',
+        'Customer Access',
+        'Circulation Planning',
+        'Service Areas',
       ],
       type: 'image',
     },
 
     {
-      id: 'commercial-plan',
-      title: 'Commercial Plan',
-      subtitle: 'Commercial floor planning and business spaces',
-      image: '/frames/commercial-plan.jpg',
+      id: 'first-floor-plan',
+      title: '1st Floor Plan',
+      subtitle: 'First floor architectural planning',
+      image: frame('1st floor.png'),
       description:
-        'A commercial floor planning overview showing how business spaces, circulation, access and supporting areas are organized within Muktar Plaza.',
+        'Detailed first floor architectural plan showing the planned spaces, circulation and functional arrangement.',
+      type: 'image',
+    },
+
+    {
+      id: 'second-floor-plan',
+      title: '2nd Floor Plan',
+      subtitle: 'Second floor architectural planning',
+      image: frame('2nd floor.png'),
+      description:
+        'Detailed second floor architectural plan showing the planned spaces, circulation and functional arrangement.',
+      type: 'image',
+    },
+
+    {
+      id: 'third-floor-plan',
+      title: '3rd Floor Plan',
+      subtitle: 'Third floor architectural planning',
+      image: frame('3rd floor.png'),
+      description:
+        'Detailed third floor architectural plan showing the planned spaces, circulation and functional arrangement.',
+      type: 'image',
+    },
+
+    {
+      id: 'fifth-floor-plan',
+      title: '5th Floor Plan',
+      subtitle: 'Fifth floor architectural planning',
+      image: frame('5th floor.png'),
+      description:
+        'Detailed fifth floor architectural plan showing the planned spaces, circulation and functional arrangement.',
+      type: 'image',
+    },
+
+    {
+      id: 'ninth-floor-plan',
+      title: '9th Floor Plan',
+      subtitle: 'Ninth floor architectural planning',
+      image: frame('9th floor.png'),
+      description:
+        'Detailed ninth floor architectural plan showing the planned spaces, circulation and functional arrangement.',
+      type: 'image',
+    },
+
+    {
+      id: 'eleventh-floor-plan',
+      title: '11th Floor Plan',
+      subtitle: 'Eleventh floor architectural planning',
+      image: frame('11 th floor.png'),
+      description:
+        'Detailed eleventh floor architectural plan showing the planned spaces, circulation and functional arrangement.',
+      type: 'image',
+    },
+
+    {
+      id: 'twelfth-floor-plan',
+      title: '12th Floor Plan',
+      subtitle: 'Twelfth floor architectural planning',
+      image: frame('12th floor.png'),
+      description:
+        'Detailed twelfth floor architectural plan showing the planned spaces, circulation and functional arrangement.',
+      type: 'image',
+    },
+
+    {
+      id: 'typical-floor-a',
+      title: 'Typical Floor Type A',
+      subtitle: 'Residential typical floor configuration',
+      image: frame('Tripical Floor Type A.png'),
+      description:
+        'Typical residential floor configuration presenting the apartment layout, circulation and functional planning.',
       highlights: [
-        'Commercial Floor Layout',
-        'Business Space Planning',
-        'Vertical Circulation',
-        'Common Access Areas',
-        'Practical Commercial Flow',
+        'Residential Layout',
+        'Room Planning',
+        'Circulation',
+        'Functional Arrangement',
       ],
       type: 'image',
     },
 
     {
-      id: 'residential-plan',
-      title: 'Residential Plan',
-      subtitle: 'Residential apartment layout and unit configuration',
-      image: '/frames/Untitled (2048 x 1649 px).png',
+      id: 'typical-floor-b',
+      title: 'Typical Floor Type B',
+      subtitle: 'Residential typical floor configuration',
+      image: frame('Tripical Floor Type b.png'),
       description:
-        'The residential planning overview for Muktar Plaza, showing apartment configurations, circulation, room planning, access and the overall residential layout.',
-      highlights: [
-        'Type A • 1245 sqft',
-        'Type B • 1475 sqft',
-        'Type C • 1405 sqft',
-        'Type D • 1420 sqft',
-        'Type E • 1515 sqft',
-      ],
+        'Typical residential floor configuration presenting the apartment layout, circulation and functional planning.',
+      type: 'image',
+    },
+
+    {
+      id: 'typical-floor-c',
+      title: 'Typical Floor Type C',
+      subtitle: 'Residential typical floor configuration',
+      image: frame('Tripical Floor Type c.png'),
+      description:
+        'Typical residential floor configuration presenting the apartment layout, circulation and functional planning.',
+      type: 'image',
+    },
+
+    {
+      id: 'typical-floor-d',
+      title: 'Typical Floor Type D',
+      subtitle: 'Residential typical floor configuration',
+      image: frame('Tripical Floor Type d.png'),
+      description:
+        'Typical residential floor configuration presenting the apartment layout, circulation and functional planning.',
+      type: 'image',
+    },
+
+    {
+      id: 'typical-floor-e',
+      title: 'Typical Floor Type E',
+      subtitle: 'Residential typical floor configuration',
+      image: frame('Tripical Floor Type e.png'),
+      description:
+        'Typical residential floor configuration presenting the apartment layout, circulation and functional planning.',
+      type: 'image',
+    },
+
+    {
+      id: 'typical-floor-f',
+      title: 'Typical Floor Type F',
+      subtitle: 'Residential typical floor configuration',
+      image: frame('Tripical Floor Type f.png'),
+      description:
+        'Typical residential floor configuration presenting the apartment layout, circulation and functional planning.',
       type: 'image',
     },
 
     {
       id: 'roof-floor-plan',
       title: 'Roof Floor Plan',
-      subtitle: 'Roof-level architectural and service planning',
-      image: '/frames/10.jpg',
+      subtitle: 'Roof-level architectural planning',
+      image: frame('roof floor.png'),
       description:
-        'A detailed roof floor plan showing rooftop circulation, service access, open areas and architectural planning at the roof level.',
-      highlights: [
-        'Roof-Level Layout',
-        'Service Access',
-        'Circulation Planning',
-        'Open Terrace Areas',
-        'Architectural Arrangement',
-      ],
+        'Roof floor architectural planning showing the roof-level arrangement, access and supporting spaces.',
       type: 'image',
     },
 
     {
-      id: 'rooftop-floor-plan',
-      title: 'Rooftop Floor Plan',
-      subtitle: 'Upper rooftop deck and amenity planning',
-      image: '/frames/11.jpg',
+      id: 'roof-top',
+      title: 'Roof Top',
+      subtitle: 'Rooftop architectural arrangement',
+      image: frame('roof top.png'),
       description:
-        'A rooftop floor planning study presenting the upper-level arrangement, open areas, service zones and rooftop architectural organization.',
-      highlights: [
-        'Rooftop Arrangement',
-        'Open Deck Areas',
-        'Service Zones',
-        'Access & Circulation',
-        'Upper-Level Planning',
-      ],
+        'Rooftop planning showing the upper-level open spaces, access and architectural organization.',
+      type: 'image',
+    },
+
+    /* ================================================================
+       FEATURES & AMENITIES — SAME TITLE / TWO IMAGES
+    ================================================================= */
+
+    {
+      id: 'features-amenities-1',
+      title: 'Features & Amenities',
+      subtitle: 'Project features and amenities — 01',
+      image: frame('Features 1.png'),
+      description:
+        'A visual presentation of the key features and amenities planned for Muktar Plaza.',
+      type: 'image',
+    },
+
+    {
+      id: 'features-amenities-2',
+      title: 'Features & Amenities',
+      subtitle: 'Project features and amenities — 02',
+      image: frame('Features 2.png'),
+      description:
+        'Additional features and amenities planned as part of the Muktar Plaza development.',
       type: 'image',
     },
   ],
 
-  residential: [
-    {
-      id: 'residential-flat-plans',
-      title: 'Residential Flat Plans',
-      subtitle: 'Apartment configurations for modern living',
-      image: '/frames/Untitled (2048 x 1649 px).png',
-      description:
-        'Explore the residential apartment configurations planned for Muktar Plaza, with multiple unit types designed around practical room planning, circulation, comfort and everyday living.',
-      highlights: [
-        'Type A • 1245 sqft',
-        'Type B • 1475 sqft',
-        'Type C • 1405 sqft',
-        'Type D • 1420 sqft',
-        'Type E • 1515 sqft',
-      ],
-      type: 'image',
-    },
-
-    {
-      id: 'residential-arrival',
-      title: 'Residential Arrival Experience',
-      subtitle: 'Elegant residential gateway and entry',
-      image: '/frames/8.jpg',
-      description:
-        'A refined residential arrival perspective highlighting the building entrance, facade character, landscaping and overall residential presence.',
-      type: 'image',
-    },
-  ],
-
-  commercial: [
-    {
-      id: 'commercial-shop-plan',
-      title: 'Shop Plan',
-      subtitle: 'Dedicated retail shop layout',
-      image: '/frames/shop-plan.jpg',
-      description:
-        'A dedicated retail planning view showing shop arrangement, frontage, circulation and practical commercial access.',
-      highlights: [
-        'Retail Shop Arrangement',
-        'Commercial Frontage',
-        'Customer Access',
-        'Circulation Planning',
-      ],
-      type: 'image',
-    },
-
-    {
-      id: 'commercial-floor-plan',
-      title: 'Commercial Plan',
-      subtitle: 'Business and commercial floor layout',
-      image: '/frames/commercial-plan.jpg',
-      description:
-        'A commercial floor layout designed around practical business use, accessibility, circulation and customer-facing spaces.',
-      highlights: [
-        'Commercial Floor Layout',
-        'Business Space Planning',
-        'Access & Circulation',
-        'Common Areas',
-      ],
-      type: 'image',
-    },
-
-    {
-      id: 'retail-gateway',
-      title: 'Retail Gateway',
-      subtitle: 'High-street commercial entrance',
-      image: '/frames/9.jpg.jpeg',
-      description:
-        'A premium commercial arrival point designed to create a strong first impression for shoppers, businesses and tenants.',
-      type: 'image',
-    },
-
-    {
-      id: 'brand-frontage',
-      title: 'Brand Frontage',
-      subtitle: 'Street-facing retail display zone',
-      image: '/frames/4.jpg',
-      description:
-        'A commercial frontage visual highlighting the retail-facing architectural character and street presence of Muktar Plaza.',
-      type: 'image',
-    },
-
-    {
-      id: 'commercial-atrium',
-      title: 'Commercial Atrium View',
-      subtitle: 'Dynamic retail circulation area',
-      image: '/frames/5.jpg',
-      description:
-        'A refined commercial perspective representing circulation, shared spaces and the retail experience within Muktar Plaza.',
-      type: 'image',
-    },
-  ],
-
-  views: [
-    {
-      id: 'north-elevation',
-      title: 'North Elevation Perspective',
-      subtitle: 'Signature exterior architecture',
-      image: '/frames/1.jpg.jpeg',
-      description:
-        'A premium 3D elevation view showing the architectural character and overall facade composition of Muktar Plaza.',
-      type: 'image',
-    },
-
-    {
-      id: 'rooftop-aerial',
-      title: 'Rooftop Aerial View',
-      subtitle: 'Sky-level architectural perspective',
-      image: '/frames/2.jpg.jpeg',
-      description:
-        'An aerial 3D view showing the upper portion of the building and its surrounding architectural context.',
-      type: 'image',
-    },
-
-    {
-      id: 'full-structure',
-      title: 'Full Structure Perspective',
-      subtitle: 'Complete building exterior study',
-      image: '/frames/3.jpg.jpeg',
-      description:
-        'A project render capturing the overall exterior presence, building form and surrounding landscape context.',
-      type: 'image',
-    },
-
-    {
-      id: 'facade-perspective',
-      title: 'Facade Perspective',
-      subtitle: 'Detailed building context',
-      image: '/frames/3 (1).png',
-      description:
-        'A detailed architectural perspective highlighting the building facade, scale, glazing and material composition.',
-      type: 'image',
-    },
-
-    {
-      id: 'top-view',
-      title: '3D Top View',
-      subtitle: 'Premium aerial perspective',
-      image: '/frames/12.jpg',
-      description:
-        'A cinematic top view providing a broader understanding of the project form, roof arrangement and architectural context.',
-      type: 'image',
-    },
-  ],
+  /* ================================================================
+     VIDEOS — ONLY ONE YOUTUBE VIDEO
+  ================================================================= */
 
   videos: [
     {
-      id: 'project-preview',
-      title: 'Muktar Plaza Project Preview',
-      subtitle: 'Cinematic architecture presentation',
+      id: 'muktar-plaza-video',
+      title: 'Muktar Plaza Project Video',
+      subtitle: 'Cinematic project presentation',
       description:
-        'A premium motion study showcasing the architecture, building form and spatial concept of Muktar Plaza.',
-      src: '/frames/Untitled design (2).mp4',
-      poster: '/frames/1.jpg.jpeg',
-      type: 'video',
-    },
-
-    {
-      id: 'project-walkthrough',
-      title: 'Muktar Plaza Walkthrough',
-      subtitle: 'Design and project cinematic study',
-      description:
-        'A dynamic walkthrough highlighting architectural details, circulation, facade rhythm and the overall project experience.',
-      src: '/frames/Untitled design (12).mp4',
-      poster: '/frames/2.jpg.jpeg',
-      type: 'video',
+        'Watch the Muktar Plaza project presentation and explore the architectural vision, building character and overall development concept.',
+      youtubeId: 'aBLqvD0SzEI',
+      youtubeStart: 5,
+      type: 'youtube',
     },
   ],
 }
 
+/* ================================================================
+   TRANSITION
+================================================================ */
+
 const springTransition = {
-  type: 'spring',
+  type: 'spring' as const,
   stiffness: 180,
   damping: 24,
   mass: 0.8,
 }
+
+/* ================================================================
+   COMPONENT
+================================================================ */
 
 export default function FloorPlans() {
   const [activeCategory, setActiveCategory] =
@@ -365,32 +324,41 @@ export default function FloorPlans() {
   const [lightboxAsset, setLightboxAsset] =
     useState<Asset | null>(null)
 
-  const [isImageLoaded, setIsImageLoaded] = useState(false)
-
   const activeAssets = useMemo(
     () => assetsMap[activeCategory],
     [activeCategory]
   )
 
-  const activeAsset = activeAssets[activeIndex]
+  const activeAsset =
+    activeAssets[activeIndex] ?? activeAssets[0]
+
+  /* ================================================================
+     RESET WHEN CATEGORY CHANGES
+  ================================================================= */
 
   useEffect(() => {
     setActiveIndex(0)
-    setIsImageLoaded(false)
   }, [activeCategory])
 
-  useEffect(() => {
-    if (!lightboxAsset) {
-      document.body.style.overflow = ''
-      return
-    }
+  /* ================================================================
+     BODY LOCK FOR LIGHTBOX
+  ================================================================= */
 
-    document.body.style.overflow = 'hidden'
+  useEffect(() => {
+    if (lightboxAsset) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
 
     return () => {
       document.body.style.overflow = ''
     }
   }, [lightboxAsset])
+
+  /* ================================================================
+     KEYBOARD NAVIGATION
+  ================================================================= */
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -400,13 +368,17 @@ export default function FloorPlans() {
 
       if (event.key === 'ArrowRight') {
         setActiveIndex((current) =>
-          current === activeAssets.length - 1 ? 0 : current + 1
+          current >= activeAssets.length - 1
+            ? 0
+            : current + 1
         )
       }
 
       if (event.key === 'ArrowLeft') {
         setActiveIndex((current) =>
-          current === 0 ? activeAssets.length - 1 : current - 1
+          current <= 0
+            ? activeAssets.length - 1
+            : current - 1
         )
       }
     }
@@ -420,52 +392,77 @@ export default function FloorPlans() {
 
   const nextAsset = () => {
     setActiveIndex((current) =>
-      current === activeAssets.length - 1 ? 0 : current + 1
+      current >= activeAssets.length - 1
+        ? 0
+        : current + 1
     )
-    setIsImageLoaded(false)
   }
 
   const previousAsset = () => {
     setActiveIndex((current) =>
-      current === 0 ? activeAssets.length - 1 : current - 1
+      current <= 0
+        ? activeAssets.length - 1
+        : current - 1
     )
-    setIsImageLoaded(false)
   }
 
   const selectAsset = (index: number) => {
-    setIsImageLoaded(false)
     setActiveIndex(index)
   }
 
   return (
     <section
       id="floorplans"
-      className="relative z-10 mx-auto max-w-[1600px] px-5 py-24 sm:px-8 md:px-12 lg:py-32"
+      className="relative z-10 mx-auto max-w-[1600px] px-5 py-20 sm:px-8 md:px-10 lg:py-28"
     >
-      {/* HEADER */}
+      {/* ================================================================
+          HEADER
+      ================================================================= */}
 
-      <div className="mb-12 flex flex-col gap-8 lg:mb-16 lg:flex-row lg:items-end lg:justify-between">
-        <div className="max-w-3xl">
+      <div className="mb-8 flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between">
+        <div className="max-w-[700px]">
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7 }}
-            className="mb-5 flex items-center gap-3"
+            initial={{
+              opacity: 0,
+              y: 15,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              duration: 0.6,
+            }}
+            className="mb-4 flex items-center gap-3"
           >
             <span className="h-px w-10 bg-gold-400" />
 
-            <span className="text-[10px] font-semibold uppercase tracking-[0.35em] text-gold-400">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-gold-400">
               05 — Plans & Space
             </span>
           </motion.div>
 
           <motion.h2
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.05 }}
-            className="font-serif text-4xl font-bold leading-[0.98] tracking-tight text-white sm:text-5xl lg:text-6xl"
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              duration: 0.7,
+            }}
+            className="font-serif text-4xl font-bold leading-[1] tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
             Muktar Plaza{' '}
             <span className="bg-gradient-to-r from-gold-200 via-gold-400 to-gold-600 bg-clip-text text-transparent">
@@ -474,47 +471,72 @@ export default function FloorPlans() {
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.12 }}
-            className="mt-6 max-w-2xl text-sm leading-7 text-neutral-400 sm:text-base"
+            initial={{
+              opacity: 0,
+              y: 15,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              duration: 0.7,
+              delay: 0.1,
+            }}
+            className="mt-5 max-w-[680px] text-sm leading-7 text-neutral-400 sm:text-base"
           >
-            Explore the complete planning vision of Muktar Plaza — from the
-            full project layout and parking arrangement to dedicated shop,
-            commercial, residential, roof and rooftop floor plans.
+            Explore the complete planning vision of Muktar Plaza —
+            from project information and floor plans to features,
+            amenities and project videos.
           </motion.p>
         </div>
 
-        {/* CATEGORY NAVIGATION */}
+        {/* ================================================================
+            ONLY TWO BUTTONS
+        ================================================================= */}
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="flex max-w-full gap-2 overflow-x-auto pb-2 lg:max-w-[650px] lg:justify-end"
+          initial={{
+            opacity: 0,
+            y: 15,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 0.6,
+          }}
+          className="flex shrink-0 gap-2"
         >
           {categories.map((category) => {
-            const isActive = activeCategory === category.id
+            const isActive =
+              activeCategory === category.id
 
             return (
               <button
                 key={category.id}
                 type="button"
                 onClick={() => setActiveCategory(category.id)}
-                className="relative shrink-0 overflow-hidden rounded-full border border-white/10 px-4 py-2.5 text-[9px] font-semibold uppercase tracking-[0.18em] transition-all duration-500 sm:px-5 sm:text-[10px]"
+                className="relative overflow-hidden rounded-full border border-white/15 px-5 py-3 text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-300 sm:px-6"
               >
                 {isActive && (
                   <motion.span
-                    layoutId="floorplan-category-pill"
+                    layoutId="category-pill"
                     transition={springTransition}
-                    className="absolute inset-0 bg-gold-500"
+                    className="absolute inset-0 bg-gold-400"
                   />
                 )}
 
                 <span
-                  className={`relative z-10 transition-colors duration-300 ${
+                  className={`relative z-10 ${
                     isActive
                       ? 'text-obsidian'
                       : 'text-neutral-400 hover:text-white'
@@ -528,453 +550,535 @@ export default function FloorPlans() {
         </motion.div>
       </div>
 
-      {/* MAIN EXPERIENCE */}
+      {/* ================================================================
+          MAIN LAYOUT
+      ================================================================= */}
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(300px,0.75fr)_minmax(0,1.25fr)] xl:gap-8">
-        {/* LEFT */}
+      <div className="grid gap-5 lg:grid-cols-[390px_minmax(0,1fr)] xl:grid-cols-[410px_minmax(0,1fr)]">
+        {/* ==============================================================
+            LEFT COLUMN
+        ============================================================== */}
 
         <div className="flex min-w-0 flex-col">
-          {/* ASSET SELECTOR */}
+          {/* ASSET LIST */}
 
-          <div className="mb-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
-            {activeAssets.map((asset, index) => {
-              const isActive = activeIndex === index
+          <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#080a0e]">
+            <div className="max-h-[545px] overflow-y-auto px-1.5 py-1.5 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/20">
+              {activeAssets.map((asset, index) => {
+                const isActive =
+                  activeIndex === index
 
-              return (
-                <motion.button
-                  key={asset.id}
-                  type="button"
-                  onClick={() => selectAsset(index)}
-                  whileHover={{ x: 4 }}
-                  transition={{ duration: 0.25 }}
-                  className={`group relative overflow-hidden rounded-2xl border p-4 text-left transition-all duration-500 sm:p-5 ${
-                    isActive
-                      ? 'border-gold-400/40 bg-white/[0.07]'
-                      : 'border-white/[0.07] bg-white/[0.02] hover:border-white/15 hover:bg-white/[0.04]'
-                  }`}
-                >
-                  {isActive && (
-                    <motion.div
-                      layoutId="active-floorplan-line"
-                      className="absolute inset-y-0 left-0 w-[2px] bg-gold-400"
-                    />
-                  )}
+                return (
+                  <button
+                    key={asset.id}
+                    type="button"
+                    onClick={() => selectAsset(index)}
+                    className={`group relative flex w-full items-center gap-3 border-b border-white/[0.08] px-4 py-3.5 text-left transition-all duration-300 last:border-b-0 ${
+                      isActive
+                        ? 'bg-white/[0.045]'
+                        : 'hover:bg-white/[0.025]'
+                    }`}
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="active-item-line"
+                        className="absolute bottom-1 top-1 left-0 w-[2px] rounded-full bg-gold-400"
+                      />
+                    )}
 
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="min-w-0">
-                      <div className="mb-2 flex items-center gap-2">
-                        <span
-                          className={`text-[8px] uppercase tracking-[0.25em] ${
-                            isActive
-                              ? 'text-gold-400'
-                              : 'text-neutral-600'
-                          }`}
-                        >
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
+                    {/* NUMBER */}
 
-                        <span className="h-px w-5 bg-white/10" />
-
-                        <span className="text-[8px] uppercase tracking-[0.2em] text-neutral-600">
-                          {asset.type === 'video'
-                            ? 'Motion'
-                            : 'Architecture'}
-                        </span>
-                      </div>
-
-                      <h3 className="truncate font-serif text-lg font-semibold text-white">
-                        {asset.title}
-                      </h3>
-
-                      <p className="mt-2 line-clamp-2 text-xs leading-5 text-neutral-500">
-                        {asset.subtitle}
-                      </p>
-                    </div>
-
-                    <div
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-500 ${
+                    <span
+                      className={`w-7 shrink-0 text-[9px] font-semibold ${
                         isActive
-                          ? 'border-gold-400/40 bg-gold-500 text-obsidian'
-                          : 'border-white/10 bg-white/[0.03] text-neutral-500 group-hover:border-gold-400/30 group-hover:text-gold-400'
+                          ? 'text-gold-400'
+                          : 'text-neutral-500'
                       }`}
                     >
-                      {asset.type === 'video' ? (
-                        <Play className="ml-0.5 h-3.5 w-3.5 fill-current" />
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+
+                    {/* LINE */}
+
+                    <span className="h-px w-5 shrink-0 bg-white/15" />
+
+                    {/* TITLE */}
+
+                    <span
+                      className={`min-w-0 flex-1 truncate text-[11px] font-medium transition-colors ${
+                        isActive
+                          ? 'text-white'
+                          : 'text-neutral-400 group-hover:text-white'
+                      }`}
+                    >
+                      {asset.title}
+                    </span>
+
+                    {/* ARROW */}
+
+                    <span
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-all ${
+                        isActive
+                          ? 'border-gold-400 bg-gold-400 text-obsidian'
+                          : 'border-white/10 text-neutral-500 group-hover:border-white/25 group-hover:text-white'
+                      }`}
+                    >
+                      {asset.type === 'youtube' ? (
+                        <Play className="ml-0.5 h-3 w-3 fill-current" />
                       ) : (
-                        <Maximize2 className="h-3.5 w-3.5" />
+                        <ArrowRight className="h-3 w-3" />
                       )}
-                    </div>
-                  </div>
-                </motion.button>
-              )
-            })}
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
           </div>
 
-          {/* DETAILS */}
+          {/* ==============================================================
+              DETAILS CARD
+          ============================================================== */}
 
           <AnimatePresence mode="wait">
             <motion.div
               key={`${activeCategory}-${activeAsset.id}`}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.45 }}
-              className="relative flex flex-1 flex-col overflow-hidden rounded-[2rem] border border-gold-500/15 bg-white/[0.025] p-6 sm:p-8"
+              initial={{
+                opacity: 0,
+                y: 10,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              exit={{
+                opacity: 0,
+                y: -10,
+              }}
+              transition={{
+                duration: 0.4,
+              }}
+              className="mt-4 flex flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#080a0e] p-5 sm:p-6"
             >
-              <div className="pointer-events-none absolute -right-24 -top-24 h-48 w-48 rounded-full bg-gold-500/[0.05] blur-3xl" />
+              <p className="text-[8px] font-bold uppercase tracking-[0.3em] text-gold-400">
+                {activeCategory === 'videos'
+                  ? 'Project Video'
+                  : 'Plan Details'}
+              </p>
 
-              <div className="relative">
-                <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-gold-400">
-                  {activeAsset.type === 'video'
-                    ? 'Cinematic Preview'
-                    : activeCategory === 'plans'
-                      ? 'Plan Details'
-                      : 'Project Details'}
-                </p>
+              <h3 className="mt-3 font-serif text-2xl font-bold uppercase leading-tight text-white">
+                {activeAsset.title}
+              </h3>
 
-                <h3 className="mt-3 font-serif text-2xl font-bold leading-tight text-white sm:text-3xl">
-                  {activeAsset.title}
-                </h3>
-
-                <p className="mt-4 text-sm leading-7 text-neutral-400">
-                  {activeAsset.description}
-                </p>
-              </div>
+              <p className="mt-3 text-[11px] leading-6 text-neutral-500">
+                {activeAsset.description}
+              </p>
 
               {activeAsset.highlights && (
-                <div className="relative mt-7 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                  {activeAsset.highlights.map((item, index) => (
-                    <motion.div
-                      key={item}
-                      initial={{ opacity: 0, x: -8 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{
-                        duration: 0.35,
-                        delay: index * 0.05,
-                      }}
-                      className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.025] px-4 py-3 text-[11px] text-neutral-400"
-                    >
-                      <span className="h-1 w-1 shrink-0 rounded-full bg-gold-400" />
-                      {item}
-                    </motion.div>
-                  ))}
+                <div className="mt-5 space-y-2">
+                  {activeAsset.highlights.map(
+                    (item) => (
+                      <div
+                        key={item}
+                        className="flex items-center gap-2 rounded-lg border border-white/[0.07] px-3 py-2 text-[9px] text-neutral-400"
+                      >
+                        <span className="h-1 w-1 shrink-0 rounded-full bg-gold-400" />
+
+                        {item}
+                      </div>
+                    )
+                  )}
                 </div>
               )}
 
-              <div className="relative mt-auto flex flex-wrap gap-3 pt-8">
+              <div className="mt-6 flex gap-2">
                 <a
                   href="#contact"
-                  className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 px-6 py-3.5 text-[9px] font-bold uppercase tracking-[0.2em] text-obsidian transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-gold-500/20"
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-gold-400 px-4 py-3 text-[8px] font-bold uppercase tracking-[0.18em] text-obsidian transition-all hover:bg-gold-300"
                 >
-                  {activeCategory === 'commercial'
-                    ? 'Explore Commercial Spaces'
-                    : activeCategory === 'residential'
-                      ? 'Explore Residential Flats'
-                      : activeCategory === 'plans'
-                        ? 'Request Detailed Plan'
-                        : activeCategory === 'videos'
-                          ? 'Request Project Details'
-                          : 'Explore Muktar Plaza'}
+                  {activeCategory === 'videos'
+                    ? 'Request Details'
+                    : 'Request Detailed Plan'}
 
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowRight className="h-3 w-3" />
                 </a>
 
-                <button
-                  type="button"
-                  onClick={() => setLightboxAsset(activeAsset)}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-3.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-neutral-300 transition-all duration-300 hover:border-gold-400/30 hover:bg-white/[0.06] hover:text-white"
-                >
-                  <Maximize2 className="h-3.5 w-3.5" />
-                  Fullscreen
-                </button>
+                {activeAsset.type === 'image' && (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setLightboxAsset(activeAsset)
+                    }
+                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 px-4 py-3 text-[8px] font-bold uppercase tracking-[0.18em] text-neutral-300 transition-all hover:border-gold-400/40 hover:text-white"
+                  >
+                    <Maximize2 className="h-3 w-3" />
+
+                    <span className="hidden sm:inline">
+                      Full Screen
+                    </span>
+                  </button>
+                )}
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* RIGHT — HERO VISUAL */}
+        {/* ==============================================================
+            RIGHT VISUAL PANEL
+        ============================================================== */}
 
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.9 }}
-          className="relative min-h-[440px] overflow-hidden rounded-[2rem] border border-white/10 bg-[#070b11] shadow-2xl shadow-black/50 sm:min-h-[560px] lg:min-h-[700px]"
+          initial={{
+            opacity: 0,
+            y: 15,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.1,
+          }}
+          transition={{
+            duration: 0.7,
+          }}
+          className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#080a0e]"
         >
-          {/* TOP METADATA */}
+          {/* TOP HEADER */}
 
-          <div className="pointer-events-none absolute left-6 right-6 top-6 z-30 flex items-start justify-between sm:left-8 sm:right-8 sm:top-8">
+          <div className="flex items-start justify-between px-6 pb-4 pt-6 sm:px-7">
             <div>
-              <p className="text-[8px] font-bold uppercase tracking-[0.35em] text-gold-400">
-                {
-                  categories.find(
-                    (category) => category.id === activeCategory
-                  )?.label
-                }
+              <p className="text-[8px] font-bold uppercase tracking-[0.3em] text-gold-400">
+                {activeCategory === 'videos'
+                  ? 'PROJECT VIDEO'
+                  : 'FLOOR PLANS'}
               </p>
 
-              <p className="mt-1 text-[9px] uppercase tracking-[0.2em] text-white/40">
-                Muktar Plaza
+              <p className="mt-1 text-[8px] uppercase tracking-[0.2em] text-neutral-600">
+                MUKTAR PLAZA
               </p>
             </div>
 
-            <div className="rounded-full border border-white/10 bg-black/20 px-3 py-1.5 text-[8px] tracking-[0.2em] text-white/50 backdrop-blur-xl">
+            <div className="rounded-full border border-white/10 px-3 py-1.5 text-[8px] tracking-[0.15em] text-neutral-500">
               {String(activeIndex + 1).padStart(2, '0')} /{' '}
               {String(activeAssets.length).padStart(2, '0')}
             </div>
           </div>
 
-          {/* VISUAL */}
+          {/* ==============================================================
+              MEDIA
+          ============================================================== */}
+
+          <div className="relative mx-3 overflow-hidden rounded-xl border border-white/[0.08] bg-black sm:mx-4">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeAsset.id}
+                initial={{
+                  opacity: 0,
+                  scale: 1.015,
+                }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                }}
+                transition={{
+                  duration: 0.45,
+                }}
+                className={
+                  activeAsset.type === 'youtube'
+                    ? 'relative aspect-video w-full'
+                    : 'relative flex min-h-[430px] items-center justify-center bg-[#050608] sm:min-h-[520px] lg:min-h-[560px]'
+                }
+              >
+                {/* IMAGE */}
+
+                {activeAsset.type === 'image' &&
+                  activeAsset.image && (
+                    <img
+                      src={activeAsset.image}
+                      alt={activeAsset.title}
+                      className="block max-h-[560px] w-full object-contain"
+                      draggable={false}
+                    />
+                  )}
+
+                {/* YOUTUBE */}
+
+                {activeAsset.type === 'youtube' &&
+                  activeAsset.youtubeId && (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${activeAsset.youtubeId}?start=${activeAsset.youtubeStart ?? 0}&rel=0&modestbranding=1`}
+                      title={activeAsset.title}
+                      className="absolute inset-0 h-full w-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* ==============================================================
+              IMAGE TITLE AREA
+          ============================================================== */}
 
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeAsset.id}
+              key={`${activeAsset.id}-title`}
               initial={{
                 opacity: 0,
-                scale: 1.035,
+                y: 8,
               }}
               animate={{
                 opacity: 1,
-                scale: 1,
+                y: 0,
               }}
               exit={{
                 opacity: 0,
-                scale: 0.985,
+                y: -8,
               }}
               transition={{
-                duration: 0.7,
-                ease: [0.22, 1, 0.36, 1],
+                duration: 0.35,
               }}
-              className="absolute inset-0"
+              className="px-6 pb-5 pt-5 sm:px-7"
             >
-              {activeAsset.type === 'video' ? (
-                <video
-                  key={activeAsset.id}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls
-                  preload="metadata"
-                  poster={activeAsset.poster}
-                  className="h-full w-full object-cover"
-                >
-                  <source
-                    src={activeAsset.src}
-                    type="video/mp4"
-                  />
-                </video>
-              ) : (
-                <>
-                  {!isImageLoaded && (
-                    <div className="absolute inset-0 z-10 animate-pulse bg-white/[0.03]" />
-                  )}
-
-                  <img
-                    src={activeAsset.image}
-                    alt={activeAsset.title}
-                    onLoad={() => setIsImageLoaded(true)}
-                    onError={() => setIsImageLoaded(true)}
-                    className={`h-full w-full object-cover transition-all duration-1000 ${
-                      isImageLoaded
-                        ? 'scale-100 opacity-100'
-                        : 'scale-[1.03] opacity-0'
-                    }`}
-                  />
-                </>
-              )}
-            </motion.div>
-          </AnimatePresence>
-
-          {/* CINEMATIC GRADIENTS */}
-
-          <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-black/45 via-transparent to-black/80" />
-
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-1/2 bg-gradient-to-t from-black/80 to-transparent" />
-
-          {/* NAVIGATION */}
-
-          <div className="absolute bottom-6 right-6 z-30 flex gap-2 sm:bottom-8 sm:right-8">
-            <button
-              type="button"
-              onClick={previousAsset}
-              aria-label="Previous asset"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/30 text-white backdrop-blur-xl transition-all duration-300 hover:border-gold-400/40 hover:bg-gold-500 hover:text-obsidian"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-
-            <button
-              type="button"
-              onClick={nextAsset}
-              aria-label="Next asset"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/30 text-white backdrop-blur-xl transition-all duration-300 hover:border-gold-400/40 hover:bg-gold-500 hover:text-obsidian"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
-
-          {/* BOTTOM INFO */}
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeAsset.id}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.45 }}
-              className="absolute bottom-6 left-6 right-32 z-20 sm:bottom-8 sm:left-8"
-            >
-              <p className="mb-2 text-[8px] font-semibold uppercase tracking-[0.3em] text-gold-400">
-                {activeAsset.type === 'video'
-                  ? 'Motion Study'
-                  : activeCategory === 'plans'
-                    ? 'Architectural Plan'
-                    : 'Architectural Visual'}
+              <p className="text-[8px] font-semibold uppercase tracking-[0.28em] text-gold-400">
+                {activeAsset.type === 'youtube'
+                  ? 'Cinematic Presentation'
+                  : 'Architectural Plan'}
               </p>
 
-              <h3 className="font-serif text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-4xl">
+              <h3 className="mt-2 font-serif text-2xl font-bold uppercase leading-tight text-white sm:text-3xl">
                 {activeAsset.title}
               </h3>
 
-              <p className="mt-2 max-w-xl text-xs leading-5 text-neutral-300 sm:text-sm">
+              <p className="mt-1 text-[10px] uppercase tracking-[0.15em] text-neutral-600">
                 {activeAsset.subtitle}
               </p>
             </motion.div>
           </AnimatePresence>
 
+          {/* ==============================================================
+              THUMBNAIL NAVIGATION
+          ============================================================== */}
+
+          <div className="border-t border-white/[0.08] px-4 py-4 sm:px-6">
+            <div className="flex items-center gap-3">
+              {/* PREVIOUS */}
+
+              <button
+                type="button"
+                onClick={previousAsset}
+                aria-label="Previous"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 text-white transition-all hover:border-gold-400/40 hover:bg-gold-400 hover:text-obsidian"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+
+              {/* THUMBNAILS */}
+
+              <div className="flex min-w-0 flex-1 gap-2 overflow-x-auto pb-1 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10">
+                {activeAssets.map(
+                  (asset, index) => {
+                    const isActive =
+                      activeIndex === index
+
+                    return (
+                      <button
+                        key={asset.id}
+                        type="button"
+                        onClick={() =>
+                          selectAsset(index)
+                        }
+                        className={`group relative w-[86px] shrink-0 overflow-hidden rounded-lg border transition-all duration-300 sm:w-[92px] ${
+                          isActive
+                            ? 'border-gold-400'
+                            : 'border-white/10 hover:border-white/25'
+                        }`}
+                      >
+                        {/* IMAGE THUMB */}
+
+                        {asset.type === 'image' &&
+                          asset.image && (
+                            <div className="aspect-[1.45] bg-black">
+                              <img
+                                src={asset.image}
+                                alt={asset.title}
+                                className="h-full w-full object-cover"
+                                loading="lazy"
+                                draggable={false}
+                              />
+                            </div>
+                          )}
+
+                        {/* VIDEO THUMB */}
+
+                        {asset.type ===
+                          'youtube' && (
+                          <div className="relative flex aspect-[1.45] items-center justify-center bg-[#111]">
+                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gold-400 text-obsidian">
+                              <Play className="ml-0.5 h-3.5 w-3.5 fill-current" />
+                            </div>
+                          </div>
+                        )}
+
+                        {/* TITLE */}
+
+                        <div className="border-t border-white/10 bg-[#0b0d12] px-2 py-2">
+                          <p
+                            className={`truncate text-[8px] font-semibold ${
+                              isActive
+                                ? 'text-gold-400'
+                                : 'text-neutral-500'
+                            }`}
+                          >
+                            {asset.title}
+                          </p>
+                        </div>
+                      </button>
+                    )
+                  }
+                )}
+              </div>
+
+              {/* NEXT */}
+
+              <button
+                type="button"
+                onClick={nextAsset}
+                aria-label="Next"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 text-white transition-all hover:border-gold-400/40 hover:bg-gold-400 hover:text-obsidian"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+
           {/* PROGRESS */}
 
-          <div className="absolute bottom-0 left-0 right-0 z-30 flex h-[2px]">
-            {activeAssets.map((asset, index) => (
-              <button
-                key={asset.id}
-                type="button"
-                onClick={() => selectAsset(index)}
-                className="group relative h-full flex-1 bg-white/10"
-                aria-label={`View ${asset.title}`}
-              >
-                <motion.span
-                  animate={{
-                    scaleX: activeIndex === index ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.4 }}
-                  className="absolute inset-0 origin-left bg-gold-400"
-                />
-              </button>
-            ))}
+          <div className="flex h-[2px] w-full">
+            {activeAssets.map(
+              (asset, index) => (
+                <button
+                  key={asset.id}
+                  type="button"
+                  onClick={() =>
+                    selectAsset(index)
+                  }
+                  className="relative h-full flex-1 bg-white/[0.08]"
+                >
+                  {activeIndex === index && (
+                    <motion.span
+                      layoutId="progress"
+                      className="absolute inset-0 bg-gold-400"
+                    />
+                  )}
+                </button>
+              )
+            )}
           </div>
         </motion.div>
       </div>
 
-      {/* LIGHTBOX */}
+      {/* ================================================================
+          FULLSCREEN LIGHTBOX
+      ================================================================= */}
 
       <AnimatePresence>
-        {lightboxAsset && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setLightboxAsset(null)}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-3 backdrop-blur-xl sm:p-6 lg:p-10"
-          >
+        {lightboxAsset &&
+          lightboxAsset.type === 'image' &&
+          lightboxAsset.image && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 15 }}
-              transition={{ duration: 0.45 }}
-              onClick={(event) => event.stopPropagation()}
-              className="relative flex max-h-[94vh] w-full max-w-[1500px] flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#080b10] shadow-2xl lg:flex-row"
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+              }}
+              exit={{
+                opacity: 0,
+              }}
+              onClick={() =>
+                setLightboxAsset(null)
+              }
+              className="fixed inset-0 z-[999] flex items-center justify-center bg-black/95 p-3 backdrop-blur-xl sm:p-6 lg:p-10"
             >
-              {/* CLOSE */}
-
-              <button
-                type="button"
-                onClick={() => setLightboxAsset(null)}
-                aria-label="Close fullscreen"
-                className="absolute right-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white backdrop-blur-xl transition-all hover:border-gold-400/30 hover:bg-gold-500 hover:text-obsidian sm:right-6 sm:top-6"
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  scale: 0.96,
+                }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                  scale: 0.96,
+                }}
+                transition={{
+                  duration: 0.35,
+                }}
+                onClick={(event) =>
+                  event.stopPropagation()
+                }
+                className="relative flex max-h-[96vh] w-full max-w-[1900px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#080a0e]"
               >
-                <X className="h-4 w-4" />
-              </button>
-
-              {/* MEDIA */}
-
-              <div className="relative flex min-h-[45vh] flex-1 items-center justify-center overflow-hidden bg-black lg:min-h-0">
-                {lightboxAsset.type === 'video' ? (
-                  <video
-                    controls
-                    autoPlay
-                    muted
-                    playsInline
-                    className="max-h-[75vh] w-full object-contain"
-                  >
-                    <source
-                      src={lightboxAsset.src}
-                      type="video/mp4"
-                    />
-                  </video>
-                ) : (
-                  <img
-                    src={lightboxAsset.image}
-                    alt={lightboxAsset.title}
-                    className="max-h-[75vh] w-full object-contain"
-                  />
-                )}
-              </div>
-
-              {/* DETAILS */}
-
-              <div className="flex w-full shrink-0 flex-col justify-center border-t border-white/10 bg-[#080b10] p-6 sm:p-8 lg:w-[340px] lg:border-l lg:border-t-0 lg:p-10 xl:w-[400px]">
-                <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-gold-400">
-                  Project Detail
-                </p>
-
-                <h3 className="mt-4 font-serif text-2xl font-bold leading-tight text-white sm:text-3xl">
-                  {lightboxAsset.title}
-                </h3>
-
-                <p className="mt-3 text-xs uppercase tracking-[0.12em] text-neutral-600">
-                  {lightboxAsset.subtitle}
-                </p>
-
-                <p className="mt-6 text-sm leading-7 text-neutral-400">
-                  {lightboxAsset.description}
-                </p>
-
-                {lightboxAsset.highlights && (
-                  <div className="mt-6 space-y-2">
-                    {lightboxAsset.highlights.map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-center gap-3 border-b border-white/[0.06] py-2.5 text-xs text-neutral-400"
-                      >
-                        <span className="h-1 w-1 rounded-full bg-gold-400" />
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                <a
-                  href="#contact"
-                  onClick={() => setLightboxAsset(null)}
-                  className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 py-3.5 text-[9px] font-bold uppercase tracking-[0.2em] text-obsidian transition-all hover:scale-[1.02]"
-                >
-                  Request This Plan
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </a>
+                {/* CLOSE */}
 
                 <button
                   type="button"
-                  onClick={() => setLightboxAsset(null)}
-                  className="mt-3 rounded-full border border-white/10 py-3.5 text-[9px] font-semibold uppercase tracking-[0.25em] text-white transition-all hover:border-gold-400/30 hover:bg-white/[0.04]"
+                  onClick={() =>
+                    setLightboxAsset(null)
+                  }
+                  className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/60 text-white backdrop-blur-xl transition-all hover:border-gold-400 hover:bg-gold-400 hover:text-obsidian"
+                  aria-label="Close fullscreen"
                 >
-                  Close Preview
+                  <X className="h-4 w-4" />
                 </button>
-              </div>
+
+                {/* IMAGE */}
+
+                <div className="flex min-h-0 flex-1 items-center justify-center overflow-auto bg-black p-2 sm:p-5">
+                  <img
+                    src={lightboxAsset.image}
+                    alt={lightboxAsset.title}
+                    className="block h-auto max-h-[88vh] w-auto max-w-full object-contain"
+                    draggable={false}
+                  />
+                </div>
+
+                {/* BOTTOM INFO */}
+
+                <div className="flex shrink-0 items-center justify-between gap-4 border-t border-white/10 bg-[#080a0e] px-5 py-4 sm:px-7">
+                  <div className="min-w-0">
+                    <p className="text-[8px] font-bold uppercase tracking-[0.3em] text-gold-400">
+                      Architectural Plan
+                    </p>
+
+                    <h3 className="mt-1 truncate font-serif text-lg font-bold uppercase text-white sm:text-xl">
+                      {lightboxAsset.title}
+                    </h3>
+                  </div>
+
+                  {/* OPEN ORIGINAL */}
+
+                  <a
+                    href={lightboxAsset.image}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex shrink-0 items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-[8px] font-bold uppercase tracking-[0.15em] text-neutral-300 transition-all hover:border-gold-400/40 hover:text-white"
+                  >
+                    <Maximize2 className="h-3 w-3" />
+                    Original Image
+                  </a>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
+          )}
       </AnimatePresence>
     </section>
   )
