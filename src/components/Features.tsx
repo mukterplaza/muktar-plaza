@@ -125,7 +125,7 @@ export default function Features() {
               font-semibold
             "
           >
-            03 — Infrastructure & Amenities
+            03 — Infrastructure & Building Facilities
           </motion.span>
 
           <motion.h2

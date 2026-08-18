@@ -181,11 +181,11 @@ export default function ContactCTA() {
               transition={{ duration: 0.7 }}
               className="mt-4 font-serif text-4xl font-bold leading-tight text-white md:text-5xl"
             >
-              Your Next Address Awaits —
+              Find Your Space at
               <br />
 
               <span className="text-gold-gradient">
-                Book Today.
+                 Muktar Plaza —
               </span>
             </motion.h2>
 
@@ -199,10 +199,7 @@ export default function ContactCTA() {
               }}
               className="mt-6 max-w-xl text-base leading-relaxed text-neutral-300 md:text-lg"
             >
-              Secure your premium commercial space or corporate
-              headquarters at Muktar Plaza. Explore exceptional
-              investment opportunities backed by thoughtful
-              architecture and strategic connectivity.
+              Explore available commercial and residential spaces at a strategically connected location in Rayerbag, Jatrabari.
             </motion.p>
 
             {/* Contact Details */}

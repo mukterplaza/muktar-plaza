@@ -74,11 +74,11 @@ export default function ProjectIntro() {
                 leading-[1.1]
               "
             >
-              A Commercial Address
+              Designed for Business. 
               <br />
 
               <span className="text-gold-gradient">
-                Built to Stand Out
+                Planned for Living.
               </span>
             </h2>
 
@@ -94,10 +94,7 @@ export default function ProjectIntro() {
                 max-w-xl
               "
             >
-              Muktar Plaza is planned as a distinctive commercial
-              destination at Rayerbag, Jatrabari — bringing together
-              visibility, thoughtful space planning, modern architecture,
-              and practical business functionality.
+              Muktar Plaza is a thoughtfully planned commercial and residential development at Rayerbag, Jatrabari — bringing together strategic connectivity, modern architecture, practical space planning, and everyday convenience.
             </p>
 
             <p
@@ -111,9 +108,7 @@ export default function ProjectIntro() {
                 max-w-xl
               "
             >
-              From the building facade to circulation and shared
-              facilities, every element is designed around the experience
-              of businesses, customers, and visitors.
+              
             </p>
 
             {/* Small Trust Line */}
@@ -224,7 +219,7 @@ export default function ProjectIntro() {
                 transition-colors
               "
             >
-              Distinctive Architecture
+              Strategic Highway Location
             </h3>
 
             <p
@@ -235,9 +230,7 @@ export default function ProjectIntro() {
                 leading-relaxed
               "
             >
-              A contemporary architectural language combining
-              clean geometry, modern glazing, and a strong commercial
-              presence.
+              Direct connectivity with Dhaka–Chittagong Highway and surrounding commercial zones.
             </p>
           </motion.div>
 
@@ -307,7 +300,7 @@ export default function ProjectIntro() {
                 transition-colors
               "
             >
-              Thoughtful Space Planning
+              Commercial Visibility
             </h3>
 
             <p
@@ -318,9 +311,7 @@ export default function ProjectIntro() {
                 leading-relaxed
               "
             >
-              Commercial spaces planned with practical circulation,
-              accessible entrances, and an experience designed around
-              everyday business needs.
+              A location designed to support retail, business and customer accessibility.
             </p>
           </motion.div>
 
@@ -390,7 +381,7 @@ export default function ProjectIntro() {
                 transition-colors
               "
             >
-              Engineering & Safety
+              Thoughtful Planning
             </h3>
 
             <p
@@ -401,9 +392,7 @@ export default function ProjectIntro() {
                 leading-relaxed
               "
             >
-              Engineering-led planning with structural, fire-safety,
-              and building-system considerations designed for a
-              dependable commercial environment.
+              Well-organized circulation, access and space planning for practical everyday use.
             </p>
           </motion.div>
 
@@ -473,7 +462,7 @@ export default function ProjectIntro() {
                 transition-colors
               "
             >
-              Strategic Location
+              Engineering & Safety
             </h3>
 
             <p
@@ -484,9 +473,7 @@ export default function ProjectIntro() {
                 leading-relaxed
               "
             >
-              Positioned in Rayerbag, Jatrabari, with convenient
-              access to major roads, surrounding commercial areas,
-              and the wider Dhaka business network.
+              Structural, fire-safety and building-system planning based on applicable standards.
             </p>
           </motion.div>
 

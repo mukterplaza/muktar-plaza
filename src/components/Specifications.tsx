@@ -162,11 +162,11 @@ export default function Specifications() {
             leading-[1.05]
           "
         >
-          Technical
+          Engineering &
           <br />
 
           <span className="text-gold-gradient">
-            Specifications
+            Building Standards
           </span>
         </motion.h2>
 

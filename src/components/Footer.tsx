@@ -35,12 +35,7 @@ export default function Footer() {
 
               {/* Project Description */}
               <p className="mt-4 max-w-md text-sm font-light leading-relaxed text-neutral-400">
-                Muktar Plaza is a thoughtfully planned commercial and
-                residential development at Rayerbag, Jatrabari, Dhaka,
-                featuring dedicated commercial shops and well-planned
-                residential apartments. Construction work is currently
-                ongoing, as the project continues to progress toward its
-                upcoming development milestones.
+                Muktar Plaza is a commercial and residential development at Rayerbag, Jatrabari, featuring dedicated commercial spaces and residential apartments. Construction is currently ongoing.
               </p>
 
               {/* Project Status */}

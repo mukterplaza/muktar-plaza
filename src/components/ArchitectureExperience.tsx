@@ -111,11 +111,11 @@ export default function ArchitectureExperience() {
             leading-[1.05]
           "
         >
-          Experience Muktar Plaza
+          Explore the Architecture of 
           <br />
 
           <span className="text-gold-gradient">
-            From Every Perspective
+            Muktar Plaza
           </span>
         </motion.h2>
 
@@ -147,9 +147,7 @@ export default function ArchitectureExperience() {
             mx-auto
           "
         >
-          Explore the architectural form, commercial spaces, and
-          overall project experience through our immersive visual
-          presentation.
+          Take a closer look at the building form, entrances, commercial spaces and overall architectural planning through our interactive 3D experience.
         </motion.p>
       </div>
 

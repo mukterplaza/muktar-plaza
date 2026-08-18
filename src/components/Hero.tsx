@@ -143,9 +143,8 @@ export default function Hero() {
             max-w-xl
           "
         >
-          A thoughtfully planned commercial development
-          designed for high-visibility retail, business,
-          and long-term value at Rayerbag, Jatrabari.
+          A Landmark Commercial & Residential Development at Rayerbag, Jatrabari.
+          Strategically located beside the Dhaka–Chittagong Highway, Muktar Plaza brings together commercial spaces and residential apartments in one thoughtfully planned development.
         </motion.p>
 
         {/* =================================================
